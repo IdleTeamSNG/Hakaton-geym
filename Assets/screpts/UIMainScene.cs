@@ -49,7 +49,7 @@ public class UIMainScene : MonoBehaviour
             {
                 pickedGameType = i;
                 PlayerPrefs.SetInt(GameTypeKey, pickedGameType);
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
             else
             {
