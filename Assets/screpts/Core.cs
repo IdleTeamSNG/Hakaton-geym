@@ -8,19 +8,8 @@ using UnityEngine;
 public class Core : MonoBehaviour
 {
     int answerG;
-    int z = 3; 
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
     private int randomNumber(int complexity)
     {
         int value = 0;
@@ -73,7 +62,7 @@ public class Core : MonoBehaviour
 
 
 
-    public List<int> getNewCase(int complexity)
+    public List<int> getNewCase(int complexity, int complexity1)
     {
         int answer = randomNumber(complexity);
         List<int> primeFactor = TrialDivision(answer);
@@ -81,7 +70,7 @@ public class Core : MonoBehaviour
         
 
         answerG = answer;
-        for (int j = 0; j < 3; j++)
+        for (int j = 0; j < complexity1; j++)
         {
             for (int i = 0; i < primeFactor.Count - 1; i++)
             {
@@ -90,13 +79,14 @@ public class Core : MonoBehaviour
                 primeFactor.RemoveAt(value);
             }
         }
-        //List<string> Case = new List<string>(primeFactor.Count);
-        //for (int i = 0; i < primeFactor.Count; i++)
-        //{
-            //Case[i] = System.Convert.ToString(primeFactor[i]);
-        //}
         
         return primeFactor;
 
+    }
+
+
+    public bool answer(int check)
+    {
+        return answerG == check;
     }
 }
