@@ -13,6 +13,7 @@ public class UIGame : MonoBehaviour
     [SerializeField] private Text _answerTxt;
     [SerializeField] private Text _counterTxt;
     [SerializeField] private Text _resultTxt;
+    [SerializeField] private Button _sendBtn;
 
     private int _answer;
 
@@ -32,6 +33,8 @@ public class UIGame : MonoBehaviour
     {
         StartCoroutine(ResultShow());
         _gameCount++;
+
+        _sendBtn.interactable = false;
     }
 
     public void OnButtonPress(int index)
@@ -45,12 +48,13 @@ public class UIGame : MonoBehaviour
         {
             _answer *= index;
             _answerTxt.text = _answerTxt.text + index.ToString() + "x";
-        }            
+        }
     }
 
     private void RefreshField()
     {
         PanelsShow(true);
+        _sendBtn.interactable = true;
 
         _answer = 0;
         _answerTxt.text = "";
@@ -89,7 +93,7 @@ public class UIGame : MonoBehaviour
         else
         {
             PanelsShow(false);
-            _resultTxt.text = "Loh-pidr";
+            _resultTxt.text = "Ne Molodec";
         }
 
         yield return new WaitForSeconds(3.0f);

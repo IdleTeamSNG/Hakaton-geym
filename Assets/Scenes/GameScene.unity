@@ -1336,6 +1336,7 @@ MonoBehaviour:
   _answerTxt: {fileID: 830262343}
   _counterTxt: {fileID: 1444799927}
   _resultTxt: {fileID: 220904914}
+  _sendBtn: {fileID: 427398882}
 --- !u!4 &994503214
 Transform:
   m_ObjectHideFlags: 0
