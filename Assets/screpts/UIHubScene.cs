@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class UIHubScene : MonoBehaviour
 {
-    [SerializeField] private Toggle[] _levels;
-
     private int _gameType; 
 
     private void Awake()
@@ -27,33 +25,18 @@ public class UIHubScene : MonoBehaviour
 
     }
 
-
-    public void OnPlayPress()
+    public void OnTutorialPress()
     {
-        int pickedLvl;
+        SceneManager.LoadScene("Tutor");
+    }
 
-        for (int i = 0; i < _levels.Length; i++)
-        {
-            if (_levels[i].isOn)
-            {
-                if (i == 0)
-                {
-                    SceneManager.LoadScene("Tutor");
-                }
-                else
-                {
+    public void OnLevelPress(int index)
+    {
+        int pickedLevel = index;
 
-                    pickedLvl = i;
-                    PlayerPrefs.SetInt(KeyStorage.LevelIndexKey, pickedLvl);
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                }
-            }
-            else
-            {
-                Debug.Log("No lvl picked");
-            }
-        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
+        PlayerPrefs.SetInt(KeyStorage.LevelIndexKey, pickedLevel);
         PlayerPrefs.Save();
     }
 
