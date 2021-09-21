@@ -11,7 +11,6 @@ public class UIMainScene : MonoBehaviour
     [SerializeField] private Toggle[] _gameType;
 
     private int gameType; // 0 - single, 1 - multplayer
-    private readonly string GameTypeKey;
 
     private void Start()
     {
@@ -48,7 +47,7 @@ public class UIMainScene : MonoBehaviour
             if (_gameType[i].isOn)
             {
                 pickedGameType = i;
-                PlayerPrefs.SetInt(GameTypeKey, pickedGameType);
+                PlayerPrefs.SetInt(KeyStorage.GameTypeKey, pickedGameType);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
             else
