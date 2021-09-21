@@ -7,6 +7,8 @@ using UnityEngine;
 public class Core : MonoBehaviour
 {
     int answerG;
+
+    public int AnswerG => answerG;
     
    
     private int randomNumber(int complexity)

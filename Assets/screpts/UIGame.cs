@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIGame : MonoBehaviour
 { 
@@ -9,43 +11,27 @@ public class UIGame : MonoBehaviour
    
     [SerializeField] private Text _questionTxt;
     [SerializeField] private Text _answerTxt;
+    [SerializeField] private Text _counterTxt;
+    [SerializeField] private Text _resultTxt;
 
     private int _answer;
-    private string _playerAnswer;
+
+    private int _gameCount;
+    private int _gameScore;
 
     void Start()
-    {   
-        Case = cr.getNewCase(6, 1);
+    {
+        _gameCount = 0;
+        _gameScore = 0;
 
-        for (int i = 0; i < Case.Count; i++)
-        {
-            Debug.Log(Case[i]);
-            if (i == 0)
-            {
-                _questionTxt.text = _questionTxt.text + System.Convert.ToString(Case[i]) + "x";
-            }
-            else if(i == (Case.Count - 1))
-            {
-                _questionTxt.text = _questionTxt.text + System.Convert.ToString(Case[i]) + "=";
-            }
-            else
-            {
-                _questionTxt.text = _questionTxt.text + System.Convert.ToString(Case[i]) + "x";
-            }
-        }
+        RefreshField();
 
     }
 
     public void OnSendPress()
     {
-        if (cr.answer(_answer))
-        {
-            Debug.Log("Molodec!");
-        }
-        else
-        {
-            Debug.Log("loh-pdr");
-        }
+        StartCoroutine(ResultShow());
+        _gameCount++;
     }
 
     public void OnButtonPress(int index)
@@ -60,5 +46,64 @@ public class UIGame : MonoBehaviour
             _answer *= index;
             _answerTxt.text = _answerTxt.text + index.ToString() + "x";
         }            
+    }
+
+    private void RefreshField()
+    {
+        PanelsShow(true);
+
+        _counterTxt.text = _gameScore.ToString();
+
+        Case = cr.getNewCase(6, 1);
+
+        for (int i = 0; i < Case.Count; i++)
+        {
+            Debug.Log(Case[i]);
+            if (i == 0)
+            {
+                _questionTxt.text = _questionTxt.text + System.Convert.ToString(Case[i]) + "x";
+            }
+            else if (i == (Case.Count - 1))
+            {
+                _questionTxt.text = _questionTxt.text + System.Convert.ToString(Case[i]) + "=";
+            }
+            else
+            {
+                _questionTxt.text = _questionTxt.text + System.Convert.ToString(Case[i]) + "x";
+            }
+        }
+    }
+
+    private IEnumerator ResultShow()
+    {
+        if (cr.answer(_answer))
+        {
+            PanelsShow(false);
+            _resultTxt.text = "Molodec";
+            _gameScore++;
+        }
+        else
+        {
+            PanelsShow(false);
+            _resultTxt.text = "Loh-pidr";
+        }
+
+        yield return new WaitForSeconds(3.0f);
+
+        if(_gameScore == 5)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
+        else
+        {
+            RefreshField();
+        }
+    }
+
+    private void PanelsShow(bool active)
+    {
+        _questionTxt.gameObject.SetActive(active);
+        _answerTxt.gameObject.SetActive(active);
+        _resultTxt.gameObject.SetActive(!active);
     }
 }
