@@ -7,33 +7,58 @@ public class UIGame : MonoBehaviour
     Core cr = new Core();
     List<int> Case = new List<int>();
    
-    public GameObject txt;
-    // Start is called before the first frame update
-    void Start()
-    {   Case = cr.getNewCase(6, 1);
+    [SerializeField] private Text _questionTxt;
+    [SerializeField] private Text _answerTxt;
 
-        for (int i = 0; i < Case.Count - 1; i++)
+    private int _answer;
+    private string _playerAnswer;
+
+    void Start()
+    {   
+        Case = cr.getNewCase(6, 1);
+
+        for (int i = 0; i < Case.Count; i++)
         {
             Debug.Log(Case[i]);
             if (i == 0)
             {
-                txt.GetComponent<Text>().text = txt.GetComponent<Text>().text + System.Convert.ToString(Case[i]) + "x";
+                _questionTxt.text = _questionTxt.text + System.Convert.ToString(Case[i]) + "x";
             }
             else if(i == (Case.Count - 1))
             {
-                txt.GetComponent<Text>().text = txt.GetComponent<Text>().text + System.Convert.ToString(Case[i]) + "=";
+                _questionTxt.text = _questionTxt.text + System.Convert.ToString(Case[i]) + "=";
             }
             else
             {
-                txt.GetComponent<Text>().text = txt.GetComponent<Text>().text + System.Convert.ToString(Case[i]) + "x";
+                _questionTxt.text = _questionTxt.text + System.Convert.ToString(Case[i]) + "x";
             }
         }
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnSendPress()
     {
-        
+        if (cr.answer(_answer))
+        {
+            Debug.Log("Molodec!");
+        }
+        else
+        {
+            Debug.Log("loh-pdr");
+        }
+    }
+
+    public void OnButtonPress(int index)
+    {
+        if (_answer == 0)
+        {
+            _answer = index;
+            _answerTxt.text = index.ToString() + "x";
+        }
+        else
+        {
+            _answer *= index;
+            _answerTxt.text = _answerTxt.text + index.ToString() + "x";
+        }            
     }
 }
