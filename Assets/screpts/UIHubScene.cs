@@ -36,9 +36,17 @@ public class UIHubScene : MonoBehaviour
         {
             if (_levels[i].isOn)
             {
-                pickedLvl = i;
-                PlayerPrefs.SetInt(KeyStorage.LevelIndexKey, pickedLvl);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                if (i == 0)
+                {
+                    SceneManager.LoadScene("Tutor");
+                }
+                else
+                {
+
+                    pickedLvl = i;
+                    PlayerPrefs.SetInt(KeyStorage.LevelIndexKey, pickedLvl);
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
             }
             else
             {
