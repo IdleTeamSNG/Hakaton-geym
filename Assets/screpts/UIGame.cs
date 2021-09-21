@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Ui : MonoBehaviour
+public class UIGame : MonoBehaviour
 { 
     Core cr = new Core();
     List<int> Case = new List<int>();
