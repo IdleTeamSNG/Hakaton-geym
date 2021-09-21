@@ -52,6 +52,10 @@ public class UIGame : MonoBehaviour
     {
         PanelsShow(true);
 
+        _answer = 0;
+        _answerTxt.text = "";
+        _questionTxt.text = "";
+
         _counterTxt.text = _gameScore.ToString();
 
         Case = cr.getNewCase(6, 1);
