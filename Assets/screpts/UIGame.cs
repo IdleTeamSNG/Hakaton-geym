@@ -15,8 +15,6 @@ public class UIGame : MonoBehaviour
     [SerializeField] private Text _resultTxt;
     [SerializeField] private Button _sendBtn;
 
-    private int _gameDifficulty;
-
     private int _answer;
 
     private int _gameCount;
@@ -24,12 +22,10 @@ public class UIGame : MonoBehaviour
 
     void Start()
     {
-        _gameDifficulty = PlayerPrefs.GetInt(KeyStorage.LevelIndexKey);
-
         _gameCount = 0;
         _gameScore = 0;
 
-        RefreshField(_gameDifficulty);
+        RefreshField();
 
     }
 
@@ -55,7 +51,7 @@ public class UIGame : MonoBehaviour
         }
     }
 
-    private void RefreshField(int difficulty)
+    private void RefreshField()
     {
         PanelsShow(true);
         _sendBtn.interactable = true;
@@ -66,7 +62,7 @@ public class UIGame : MonoBehaviour
 
         _counterTxt.text = _gameScore.ToString();
 
-        Case = cr.getNewCase(6, difficulty);
+        Case = cr.getNewCase(6, 1);
 
         for (int i = 0; i < Case.Count; i++)
         {
@@ -108,7 +104,7 @@ public class UIGame : MonoBehaviour
         }
         else
         {
-            RefreshField(_gameDifficulty);
+            RefreshField();
         }
     }
 
