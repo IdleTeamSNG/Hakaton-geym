@@ -8,12 +8,13 @@ public class UIMainScene : MonoBehaviour
     [SerializeField] private GameObject _settingsPanel;
     [SerializeField] private GameObject _creditsPanel;
 
-    [SerializeField] private Toggle[] _gameType;
-
+    [SerializeField] private GameObject _gameTypeObj;
+    [SerializeField] private bool _gameType;
     private int gameType; // 0 - single, 1 - multplayer
 
     private void Start()
     {
+        _gameType = _gameTypeObj.GetComponent<togle>().value;
         ShowMain();
     }
 
@@ -22,10 +23,10 @@ public class UIMainScene : MonoBehaviour
         HideLayers();
         _mainPanel.SetActive(true);
 
-        foreach(Toggle tg in _gameType)
-        {
-            tg.isOn = false;
-        }
+
+
+        _gameType = false;
+        
     }
 
     private void HideLayers()
@@ -42,19 +43,23 @@ public class UIMainScene : MonoBehaviour
     {
         int pickedGameType;
 
-        for(int i = 0; i < _gameType.Length; i++)
+        
+        
+        if (_gameType)
         {
-            if (_gameType[i].isOn)
-            {
-                pickedGameType = i;
-                PlayerPrefs.SetInt(KeyStorage.GameTypeKey, pickedGameType);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-            else
-            {
-                Debug.Log("No lvl picked");
-            }
+            pickedGameType = 1;
+            PlayerPrefs.SetInt(KeyStorage.GameTypeKey, pickedGameType);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+        else
+        {
+            pickedGameType = 0;
+            PlayerPrefs.SetInt(KeyStorage.GameTypeKey, pickedGameType);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        }
+           
+        
 
         PlayerPrefs.Save();        
     }
