@@ -155,14 +155,11 @@ public class UIGame : MonoBehaviour
 
         yield return new WaitForSeconds(3.0f);
 
-        if(_gameScore == 5 && _gameType == 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        }
-        else
-        {
+       
+       
+        
             RefreshField();
-        }
+        
     }
 
     private void PanelsShow(bool active)

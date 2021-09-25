@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class lvl1Scr : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class lvl1Scr : MonoBehaviour
     public GameObject Uimenger;
     public UIGame ui = new UIGame();
     public string endtxt;
+    public GameObject wind;
+    public Sprite virus;
     
     // Start is called before the first frame update
     void Start()
@@ -38,11 +41,32 @@ public class lvl1Scr : MonoBehaviour
             Comix++;
             TextCont.GetComponent<Text>().text = txt[Comix];
         }
-        
-        
+        else if(Comix == 6)
+        {
+            Comix++;
+            wind.SetActive(false);
+        }
+        else if (Comix == 7)
+        {
+            Comix++;
+            gameObject.GetComponent<Image>().sprite = virus;
+            TextCont.GetComponent<Text>().text = "...";
+        }
+        else if (Comix == 8)
+        {
+            SceneManager.LoadScene("UROVNI");
+    
+        }
+
+
+
     }
     public void EndLvl()
     {
-        TextCont.GetComponent<Text>().text = "endtxt";
+        wind.SetActive(true);
+        TextCont.GetComponent<Text>().text = endtxt;
+        
     }
+   
+
 }
