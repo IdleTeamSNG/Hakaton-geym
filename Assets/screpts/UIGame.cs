@@ -33,6 +33,7 @@ public class UIGame : MonoBehaviour
 
     void Start()
     {
+        Destroy(GameObject.FindGameObjectWithTag("music"));
         audioSr = audioSrObj.GetComponent<AudioSource>();
         _gameType = PlayerPrefs.GetInt(KeyStorage.MultiplayerModeKey);
         _sportMode = PlayerPrefs.GetInt(KeyStorage.SportModeKey);
