@@ -30,8 +30,9 @@ public class UIHubScene : MonoBehaviour
 
     private void Start()
     {
-        audioSr = audioSrObj.GetComponent<AudioSource>();
         _gameType = PlayerPrefs.GetInt(KeyStorage.GameTypeKey);
+        audioSr = audioSrObj.GetComponent<AudioSource>();
+        
         if(_gameType == 0)
         {
             HideAllLayers();
@@ -63,54 +64,31 @@ public class UIHubScene : MonoBehaviour
         }
     }
 
-    public void OnTutorialPress()
-    {
-        SceneManager.LoadScene("Tutor");
-    }
+   
 
     public void OnLevelPress(int index)
     {
         audioSr.PlayOneShot(ClicAu);
         int pickedLevel = index;
-        int sportMode = _sportMode ? 1 : 0;
-
-        if(_gameType == 0 && _sportMode == false) 
-        {
-            // solo
-            PlayerPrefs.SetInt(KeyStorage.MultiplayerModeKey, _gameType);
-            PlayerPrefs.SetInt(KeyStorage.SportModeKey, sportMode);
-            PlayerPrefs.SetInt(KeyStorage.LevelIndexKey, pickedLevel);
-            PlayerPrefs.Save();
-
-            StartCoroutine(playgame());
-        }
-        else if(_gameType == 0 && _sportMode)
-        {
-            // solo sport
-            PlayerPrefs.SetInt(KeyStorage.MultiplayerModeKey, _gameType);
-            PlayerPrefs.SetInt(KeyStorage.SportModeKey, sportMode);
-            PlayerPrefs.SetInt(KeyStorage.LevelIndexKey, pickedLevel);
-            PlayerPrefs.Save();
-
-            StartCoroutine(playgame());
-        }
-        else
-        {
-            // multi
-            PlayerPrefs.SetInt(KeyStorage.MultiplayerModeKey, _gameType);
-            PlayerPrefs.SetInt(KeyStorage.LevelIndexKey, pickedLevel);
-            PlayerPrefs.Save();
-
-            StartCoroutine(playMultigame());
-        }
-
+        SceneManager.LoadScene("lvl" + System.Convert.ToString(pickedLevel));
 
     }
+    public void OnSportpress(int dif)
+    {
+        PlayerPrefs.SetInt(KeyStorage.gameDifficulty, dif);
+        playgame();
+    }
+    public void OnmultiPress(int dif)
+    {
+        PlayerPrefs.SetInt(KeyStorage.gameDifficulty, dif);
+        playMultigame();
+    }
+    
     IEnumerator playgame()
     {
         audioSr.PlayOneShot(ClicAu);
         yield return new WaitForSeconds(0.4f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("GameScene");
     }
     IEnumerator playMultigame()
     {

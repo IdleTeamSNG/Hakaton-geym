@@ -21,8 +21,8 @@ public class UIGame : MonoBehaviour
     public AudioClip ClicAu;
 
     private int _gameDifficulty;
-    private int _gameType;
-    private int _sportMode;
+    public int _gameType;
+    public int _sportMode;
 
     private float _timer;
 
@@ -35,9 +35,8 @@ public class UIGame : MonoBehaviour
     {
         Destroy(GameObject.FindGameObjectWithTag("music"));
         audioSr = audioSrObj.GetComponent<AudioSource>();
-        _gameType = PlayerPrefs.GetInt(KeyStorage.MultiplayerModeKey);
-        _sportMode = PlayerPrefs.GetInt(KeyStorage.SportModeKey);
-        _gameDifficulty = PlayerPrefs.GetInt(KeyStorage.LevelIndexKey);
+        
+        _gameDifficulty = PlayerPrefs.GetInt(KeyStorage.gameDifficulty);
 
         _gameCount = 0;
         _gameScore = 0;
@@ -45,7 +44,7 @@ public class UIGame : MonoBehaviour
         SetField();
         RefreshField();
 
-        _timer = _gameDifficulty * 60;
+        _timer = _gameDifficulty;
 
     }
 
@@ -54,7 +53,7 @@ public class UIGame : MonoBehaviour
         _timer -= Time.deltaTime;
         _timerText.text = Mathf.Round(_timer).ToString();
 
-        if(_timer < 0)
+        if(_timer < 0 && _sportMode == 1)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
@@ -65,6 +64,7 @@ public class UIGame : MonoBehaviour
         audioSr.PlayOneShot(ClicAu);
         StartCoroutine(ResultShow());
         _gameCount++;
+        _counterTxt.text = _gameScore.ToString();
 
         _sendBtn.interactable = false;
     }

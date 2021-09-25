@@ -3098,6 +3098,8 @@ MonoBehaviour:
   _timerText: {fileID: 242104176}
   audioSrObj: {fileID: 997503548}
   ClicAu: {fileID: 8300000, guid: 60c45d56f734bd540993f9d54f586f29, type: 3}
+  _gameType: 1
+  _sportMode: 1
 --- !u!4 &994503214
 Transform:
   m_ObjectHideFlags: 0
@@ -3276,6 +3278,8 @@ MonoBehaviour:
   _timerText: {fileID: 1399577388}
   audioSrObj: {fileID: 997503548}
   ClicAu: {fileID: 8300000, guid: 60c45d56f734bd540993f9d54f586f29, type: 3}
+  _gameType: 1
+  _sportMode: 1
 --- !u!4 &1030575575
 Transform:
   m_ObjectHideFlags: 0

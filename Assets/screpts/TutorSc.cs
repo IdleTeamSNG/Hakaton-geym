@@ -20,6 +20,7 @@ public class TutorSc : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Destroy(GameObject.FindGameObjectWithTag("music"));
         audioSr = audioSrObj.GetComponent<AudioSource>();
         Srelka.SetActive(false);
         ImageCont.GetComponent<Image>().sprite = im[0];
@@ -42,7 +43,7 @@ public class TutorSc : MonoBehaviour
             }
         else
         {
-            SceneManager.LoadScene("Tutor1");
+            SceneManager.LoadScene("lvl1");
         }
         if (Comix != 0)
         {

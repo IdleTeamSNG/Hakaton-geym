@@ -19,15 +19,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        int mode = PlayerPrefs.GetInt(KeyStorage.GameTypeKey);
-        if(mode == 0)
-        {
-            SoloTheme();
-        }
-        else
-        {
-            MultiTheme();
-        }
+        
     }
 
     public void ClickPlay()
@@ -36,13 +28,5 @@ public class AudioManager : MonoBehaviour
         _audio.Play();
     }
 
-    public void SoloTheme()
-    {
-        mainThemeSourceMulti.Stop();
-    }
-
-    public void MultiTheme()
-    {
-        mainThemeSourceSolo.Stop();
-    }
+   
 }

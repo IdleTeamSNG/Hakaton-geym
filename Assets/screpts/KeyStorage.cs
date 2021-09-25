@@ -1,9 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public static class KeyStorage 
+public static class KeyStorage
 {
+    public static string GameTypeKey;
+    public static string gameDifficulty;
 
-    public const string GameTypeKey = "GameType";
-    public const string LevelIndexKey = "LevelIndex";
-    public const string SportModeKey = "SportMode";
-    public const string MultiplayerModeKey = "MultiPlayer";
 }
+
