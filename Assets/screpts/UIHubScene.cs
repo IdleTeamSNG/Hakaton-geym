@@ -12,11 +12,6 @@ public class UIHubScene : MonoBehaviour
 
     private int _gameType; // 0 normal, 1 multiplayer
     private bool _sportMode;
-    
-
-    private void Awake()
-    {
-    }
 
     private void OnEnable()
     {
@@ -72,8 +67,9 @@ public class UIHubScene : MonoBehaviour
         int pickedLevel = index;
         int sportMode = _sportMode ? 1 : 0;
 
-        if(_gameType == 0 && _sportMode == false)
+        if(_gameType == 0 && _sportMode == false) 
         {
+            // solo
             PlayerPrefs.SetInt(KeyStorage.MultiplayerModeKey, _gameType);
             PlayerPrefs.SetInt(KeyStorage.SportModeKey, sportMode);
             PlayerPrefs.SetInt(KeyStorage.LevelIndexKey, pickedLevel);
@@ -83,6 +79,7 @@ public class UIHubScene : MonoBehaviour
         }
         else if(_gameType == 0 && _sportMode)
         {
+            // solo sport
             PlayerPrefs.SetInt(KeyStorage.MultiplayerModeKey, _gameType);
             PlayerPrefs.SetInt(KeyStorage.SportModeKey, sportMode);
             PlayerPrefs.SetInt(KeyStorage.LevelIndexKey, pickedLevel);
@@ -92,6 +89,7 @@ public class UIHubScene : MonoBehaviour
         }
         else
         {
+            // multi
             PlayerPrefs.SetInt(KeyStorage.MultiplayerModeKey, _gameType);
             PlayerPrefs.SetInt(KeyStorage.LevelIndexKey, pickedLevel);
             PlayerPrefs.Save();
