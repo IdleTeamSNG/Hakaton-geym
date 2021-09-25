@@ -100,7 +100,7 @@ public class UIMainScene : MonoBehaviour
 
     public void OnSettingsPress()
     {
-        SceneManager.LoadScene("credits");
+        SceneManager.LoadScene("settings");
     }
 
     public void OnCreditsPress()
