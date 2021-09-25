@@ -16,6 +16,10 @@ public class UIGame : MonoBehaviour
     [SerializeField] private Button _sendBtn;
     [SerializeField] private Text _timerText;
 
+    private AudioSource audioSr;
+    public GameObject audioSrObj;
+    public AudioClip ClicAu;
+
     private int _gameDifficulty;
     private int _gameType;
     private int _sportMode;
@@ -29,6 +33,7 @@ public class UIGame : MonoBehaviour
 
     void Start()
     {
+        audioSr = audioSrObj.GetComponent<AudioSource>();
         _gameType = PlayerPrefs.GetInt(KeyStorage.MultiplayerModeKey);
         _sportMode = PlayerPrefs.GetInt(KeyStorage.SportModeKey);
         _gameDifficulty = PlayerPrefs.GetInt(KeyStorage.LevelIndexKey);
@@ -56,6 +61,7 @@ public class UIGame : MonoBehaviour
 
     public void OnSendPress()
     {
+        audioSr.PlayOneShot(ClicAu);
         StartCoroutine(ResultShow());
         _gameCount++;
 
@@ -64,6 +70,7 @@ public class UIGame : MonoBehaviour
 
     public void OnButtonPress(int index)
     {
+        audioSr.PlayOneShot(ClicAu);
         if (_answer == 0)
         {
             _answer = index;
