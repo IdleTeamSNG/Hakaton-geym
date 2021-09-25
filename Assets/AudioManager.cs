@@ -5,9 +5,9 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioClip clickSound;
-    public AudioClip soloTheme;
-    public AudioClip multiTheme;
-    public AudioSource mainThemeSource;
+    public AudioSource mainThemeSourceMulti;
+    public AudioSource mainThemeSourceSolo;
+
 
     private AudioSource _audio;
 
@@ -22,11 +22,11 @@ public class AudioManager : MonoBehaviour
         int mode = PlayerPrefs.GetInt(KeyStorage.GameTypeKey);
         if(mode == 0)
         {
-            mainThemeSource.clip = soloTheme;
+            SoloTheme();
         }
         else
         {
-            mainThemeSource.clip = multiTheme;
+            MultiTheme();
         }
     }
 
@@ -38,13 +38,11 @@ public class AudioManager : MonoBehaviour
 
     public void SoloTheme()
     {
-        _audio.clip = soloTheme;
-        _audio.Play();
+        mainThemeSourceMulti.Stop();
     }
 
     public void MultiTheme()
     {
-        _audio.clip = multiTheme;
-        _audio.Play();
+        mainThemeSourceSolo.Stop();
     }
 }
