@@ -8,8 +8,6 @@ using System.Collections;
 public class UIMainScene : MonoBehaviour
 {
     [SerializeField] private GameObject _mainPanel;
-    [SerializeField] private GameObject _settingsPanel;
-    [SerializeField] private GameObject _creditsPanel;
 
     [SerializeField] private GameObject _gameTypeObj;
     [SerializeField] private bool _gameType;
@@ -52,7 +50,7 @@ public class UIMainScene : MonoBehaviour
 
     private void ShowMain()
     {
-        HideLayers();
+        
         _mainPanel.SetActive(true);
 
 
@@ -61,12 +59,7 @@ public class UIMainScene : MonoBehaviour
         
     }
 
-    private void HideLayers()
-    {
-        _mainPanel.SetActive(false);
-        _settingsPanel.SetActive(false);
-        _creditsPanel.SetActive(false);
-    }
+   
 
 
     // buttons
@@ -107,16 +100,12 @@ public class UIMainScene : MonoBehaviour
 
     public void OnSettingsPress()
     {
-        audioSr.PlayOneShot(ClicAu);
-        HideLayers();
-        _settingsPanel.SetActive(true);
+        SceneManager.LoadScene("credits");
     }
 
     public void OnCreditsPress()
     {
-        audioSr.PlayOneShot(ClicAu);
-        HideLayers();
-        _creditsPanel.SetActive(true);
+        SceneManager.LoadScene("credits");
     }
 
     public void OnBackPress()
