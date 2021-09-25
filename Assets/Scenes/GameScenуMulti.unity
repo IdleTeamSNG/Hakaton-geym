@@ -3100,6 +3100,11 @@ MonoBehaviour:
   ClicAu: {fileID: 8300000, guid: 60c45d56f734bd540993f9d54f586f29, type: 3}
   _gameType: 1
   _sportMode: 1
+  _gameScore: 0
+  lvl1scObj: {fileID: 0}
+  lvl1sc: {fileID: 0}
+  dif1: 20
+  dif2: 2
 --- !u!4 &994503214
 Transform:
   m_ObjectHideFlags: 0
@@ -3280,6 +3285,11 @@ MonoBehaviour:
   ClicAu: {fileID: 8300000, guid: 60c45d56f734bd540993f9d54f586f29, type: 3}
   _gameType: 1
   _sportMode: 1
+  _gameScore: 0
+  lvl1scObj: {fileID: 0}
+  lvl1sc: {fileID: 0}
+  dif1: 20
+  dif2: 2
 --- !u!4 &1030575575
 Transform:
   m_ObjectHideFlags: 0

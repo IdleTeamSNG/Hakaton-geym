@@ -1765,6 +1765,11 @@ MonoBehaviour:
   ClicAu: {fileID: 8300000, guid: 60c45d56f734bd540993f9d54f586f29, type: 3}
   _gameType: 0
   _sportMode: 0
+  _gameScore: 0
+  lvl1scObj: {fileID: 0}
+  lvl1sc: {fileID: 0}
+  dif1: 20
+  dif2: 2
 --- !u!4 &994503214
 Transform:
   m_ObjectHideFlags: 0

@@ -31,7 +31,11 @@ public class UIGame : MonoBehaviour
     private int _gameCount;
     public int _gameScore;
     public GameObject lvl1scObj;
+    
     public lvl1Scr lvl1sc;
+    public int dif1;
+    public int dif2;
+
 
     void Start()
     {
@@ -115,7 +119,7 @@ public class UIGame : MonoBehaviour
 
         _counterTxt.text = _gameScore.ToString();
 
-        Case = cr.getNewCase(6, 1);
+        Case = cr.getNewCase(dif1, dif2);
 
         for (int i = 0; i < Case.Count; i++)
         {
@@ -142,10 +146,6 @@ public class UIGame : MonoBehaviour
             PanelsShow(false);
             _resultTxt.text = "Molodec";
             _gameScore++;
-            if (_gameScore == 5)
-            {
-                lvl1sc.EndLvl();
-            }
         }
         else
         {

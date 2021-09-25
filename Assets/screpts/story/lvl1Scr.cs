@@ -18,10 +18,13 @@ public class lvl1Scr : MonoBehaviour
     public string endtxt;
     public GameObject wind;
     public Sprite virus;
-    
+    public GameObject uimenager;
+    public UIGame ui;
+
     // Start is called before the first frame update
     void Start()
     {
+        ui = uimenager.GetComponent<UIGame>();
         TextCont.GetComponent<Text>().text = txt[Comix];
         audioSr = audioSrObj.GetComponent<AudioSource>();
         
@@ -31,7 +34,11 @@ public class lvl1Scr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        if (ui._gameScore == 5)
+        {
+            EndLvl();
+        }
     }
     public void next()
     {
