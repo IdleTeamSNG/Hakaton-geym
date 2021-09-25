@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
+using System.Collections;
+using System.Collections.Generic;
 
 public class UIMainScene : MonoBehaviour
 {
@@ -10,10 +13,17 @@ public class UIMainScene : MonoBehaviour
 
     [SerializeField] private GameObject _gameTypeObj;
     [SerializeField] private bool _gameType;
+
+    private AudioSource audioSr;
+    public GameObject audioSrObj;
+    public AudioClip ClicAu;
+    
+
     private int gameType; // 0 - single, 1 - multplayer
 
     private togle _toggler;
 
+   
     private void Awake()
     {
         _toggler = _gameTypeObj.GetComponent<togle>();
@@ -30,6 +40,7 @@ public class UIMainScene : MonoBehaviour
     }
     private void Start()
     {
+        audioSr = audioSrObj.GetComponent<AudioSource>();
         _gameType = _toggler.value;
         ShowMain();
     }
@@ -60,8 +71,9 @@ public class UIMainScene : MonoBehaviour
 
     // buttons
 
-    public void OnPlayPress()
+    public   void OnPlayPress()
     {
+        
         int pickedGameType;
 
         
@@ -70,42 +82,52 @@ public class UIMainScene : MonoBehaviour
         {
             // multi
             pickedGameType = 1;
-            PlayerPrefs.SetInt(KeyStorage.GameTypeKey, pickedGameType);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
         {
             // solo
             pickedGameType = 0;
-            PlayerPrefs.SetInt(KeyStorage.GameTypeKey, pickedGameType);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
+            
         }
-           
-        
+        StartCoroutine(play(pickedGameType));
 
-        PlayerPrefs.Save();        
+
+
+
+
+    }
+    IEnumerator play(int pickedGameType)
+    {
+        audioSr.PlayOneShot(ClicAu);
+        yield return new WaitForSeconds(0.3f);
+        PlayerPrefs.SetInt(KeyStorage.GameTypeKey, pickedGameType);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void OnSettingsPress()
     {
+        audioSr.PlayOneShot(ClicAu);
         HideLayers();
         _settingsPanel.SetActive(true);
     }
 
     public void OnCreditsPress()
     {
+        audioSr.PlayOneShot(ClicAu);
         HideLayers();
         _creditsPanel.SetActive(true);
     }
 
     public void OnBackPress()
     {
+        audioSr.PlayOneShot(ClicAu);
         ShowMain();
     }
 
     public void OnExitPress()
     {
+        audioSr.PlayOneShot(ClicAu);
         Application.Quit();
     }
 }
