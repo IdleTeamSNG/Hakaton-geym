@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using System.Collections;
-using System.Collections.Generic;
+
 
 public class UIMainScene : MonoBehaviour
 {
@@ -99,7 +99,7 @@ public class UIMainScene : MonoBehaviour
     IEnumerator play(int pickedGameType)
     {
         audioSr.PlayOneShot(ClicAu);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.4f);
         PlayerPrefs.SetInt(KeyStorage.GameTypeKey, pickedGameType);
         PlayerPrefs.Save();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

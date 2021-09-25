@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 
 public class UIHubScene : MonoBehaviour
@@ -9,6 +10,10 @@ public class UIHubScene : MonoBehaviour
     [SerializeField] private GameObject _sportLayer;
     [SerializeField] private GameObject _multiplayerLayer;
     [SerializeField] private togle _toggler;
+
+    private AudioSource audioSr;
+    public GameObject audioSrObj;
+    public AudioClip ClicAu;
 
     private int _gameType; // 0 normal, 1 multiplayer
     private bool _sportMode;
@@ -25,6 +30,7 @@ public class UIHubScene : MonoBehaviour
 
     private void Start()
     {
+        audioSr = audioSrObj.GetComponent<AudioSource>();
         _gameType = PlayerPrefs.GetInt(KeyStorage.GameTypeKey);
         if(_gameType == 0)
         {
@@ -64,6 +70,7 @@ public class UIHubScene : MonoBehaviour
 
     public void OnLevelPress(int index)
     {
+        audioSr.PlayOneShot(ClicAu);
         int pickedLevel = index;
         int sportMode = _sportMode ? 1 : 0;
 
@@ -75,7 +82,7 @@ public class UIHubScene : MonoBehaviour
             PlayerPrefs.SetInt(KeyStorage.LevelIndexKey, pickedLevel);
             PlayerPrefs.Save();
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            StartCoroutine(playgame());
         }
         else if(_gameType == 0 && _sportMode)
         {
@@ -85,7 +92,7 @@ public class UIHubScene : MonoBehaviour
             PlayerPrefs.SetInt(KeyStorage.LevelIndexKey, pickedLevel);
             PlayerPrefs.Save();
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            StartCoroutine(playgame());
         }
         else
         {
@@ -94,16 +101,30 @@ public class UIHubScene : MonoBehaviour
             PlayerPrefs.SetInt(KeyStorage.LevelIndexKey, pickedLevel);
             PlayerPrefs.Save();
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            StartCoroutine(playgame());
         }
 
 
     }
-
-    public void OnBackPress()
+    IEnumerator playgame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        audioSr.PlayOneShot(ClicAu);
+        yield return new WaitForSeconds(0.4f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+        public void OnBackPress()
+    {
+        StartCoroutine(back());
+    }
+    IEnumerator back()
+    {
+        audioSr.PlayOneShot(ClicAu);
+        yield return new WaitForSeconds(0.4f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+
+    }
+
 
     private void HideAllLayers()
     {

@@ -454,7 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 199567606}
   value: 0
-  audioSrObj: {fileID: 1503945986}
+  audioSr: {fileID: 1503945987}
   ClicAu: {fileID: 8300000, guid: 246c285c4eea81a428ef9ac3c919455d, type: 3}
 --- !u!222 &199567608
 CanvasRenderer:
@@ -626,9 +626,10 @@ GameObject:
   m_Component:
   - component: {fileID: 385619175}
   - component: {fileID: 385619174}
+  - component: {fileID: 385619176}
   m_Layer: 0
   m_Name: maintem
-  m_TagString: Untagged
+  m_TagString: music
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -743,6 +744,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &385619176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385619173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6652fa47805fe4848aea9aa6de696960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &715789797
 GameObject:
   m_ObjectHideFlags: 0
