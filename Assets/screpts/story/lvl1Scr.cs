@@ -14,7 +14,7 @@ public class lvl1Scr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSr = audioSrObj.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class lvl1Scr : MonoBehaviour
     public void next()
     {
         audioSr.PlayOneShot(ClicAu);
-        if (Comix < 4)
+        if (Comix < 6)
         {
             Comix++;
             TextCont.GetComponent<Text>().text = txt[Comix];
