@@ -29,10 +29,13 @@ public class UIGame : MonoBehaviour
     private int _answer;
 
     private int _gameCount;
-    private int _gameScore;
+    public int _gameScore;
+    public GameObject lvl1scObj;
+    public lvl1Scr lvl1sc;
 
     void Start()
     {
+        lvl1sc = lvl1scObj.GetComponent<lvl1Scr>();
         Destroy(GameObject.FindGameObjectWithTag("music"));
         audioSr = audioSrObj.GetComponent<AudioSource>();
         
@@ -139,6 +142,10 @@ public class UIGame : MonoBehaviour
             PanelsShow(false);
             _resultTxt.text = "Molodec";
             _gameScore++;
+            if (_gameScore == 5)
+            {
+                lvl1sc.EndLvl();
+            }
         }
         else
         {

@@ -64,5 +64,8 @@ public class TutorSc : MonoBehaviour
         {
             Srelka.SetActive(false);
         }
+       
     }
+
+   
 }
