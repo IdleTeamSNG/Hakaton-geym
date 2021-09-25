@@ -14,8 +14,13 @@ public class UIGame : MonoBehaviour
     [SerializeField] private Text _counterTxt;
     [SerializeField] private Text _resultTxt;
     [SerializeField] private Button _sendBtn;
+    [SerializeField] private Text _timerText;
 
     private int _gameDifficulty;
+    private int _gameType;
+    private int _sportMode;
+
+    private float _timer;
 
     private int _answer;
 
@@ -24,13 +29,29 @@ public class UIGame : MonoBehaviour
 
     void Start()
     {
+        _gameType = PlayerPrefs.GetInt(KeyStorage.MultiplayerModeKey);
+        _sportMode = PlayerPrefs.GetInt(KeyStorage.SportModeKey);
         _gameDifficulty = PlayerPrefs.GetInt(KeyStorage.LevelIndexKey);
 
         _gameCount = 0;
         _gameScore = 0;
 
-        RefreshField(_gameDifficulty);
+        SetField();
+        RefreshField();
 
+        _timer = _gameDifficulty * 60;
+
+    }
+
+    private void Update()
+    {
+        _timer -= Time.deltaTime;
+        _timerText.text = Mathf.Round(_timer).ToString();
+
+        if(_timer < 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
     }
 
     public void OnSendPress()
@@ -55,7 +76,24 @@ public class UIGame : MonoBehaviour
         }
     }
 
-    private void RefreshField(int difficulty)
+    public void OnExitPress()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    private void SetField()
+    {
+        if(_gameType == 0 && _sportMode == 0)
+        {
+            _timerText.gameObject.SetActive(false);
+        }
+        else
+        {
+            _timerText.gameObject.SetActive(true);
+        }
+    }
+
+    private void RefreshField()
     {
         PanelsShow(true);
         _sendBtn.interactable = true;
@@ -66,7 +104,7 @@ public class UIGame : MonoBehaviour
 
         _counterTxt.text = _gameScore.ToString();
 
-        Case = cr.getNewCase(6, difficulty);
+        Case = cr.getNewCase(6, 1);
 
         for (int i = 0; i < Case.Count; i++)
         {
@@ -102,13 +140,13 @@ public class UIGame : MonoBehaviour
 
         yield return new WaitForSeconds(3.0f);
 
-        if(_gameScore == 5)
+        if(_gameScore == 5 && _gameType == 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
         else
         {
-            RefreshField(_gameDifficulty);
+            RefreshField();
         }
     }
 

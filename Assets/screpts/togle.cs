@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class togle : MonoBehaviour
@@ -12,6 +11,8 @@ public class togle : MonoBehaviour
     public bool value;
 
     private static readonly int Value = Animator.StringToHash(name: "Value");
+
+    public event Action<bool> OnToggle;
 
 
     private void Awake()
@@ -26,6 +27,7 @@ public class togle : MonoBehaviour
     {
         this.value = !this.value;
         this.animator.SetBool(id: Value, this.value);
+        OnToggle?.Invoke(value);
     }
 
 }

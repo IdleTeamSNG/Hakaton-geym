@@ -12,10 +12,31 @@ public class UIMainScene : MonoBehaviour
     [SerializeField] private bool _gameType;
     private int gameType; // 0 - single, 1 - multplayer
 
+    private togle _toggler;
+
+    private void Awake()
+    {
+        _toggler = _gameTypeObj.GetComponent<togle>();
+    }
+
+    private void OnEnable()
+    {
+        _toggler.OnToggle += OnToggle;
+    }
+
+    private void OnDisable()
+    {
+        _toggler.OnToggle -= OnToggle;
+    }
     private void Start()
     {
-        _gameType = _gameTypeObj.GetComponent<togle>().value;
+        _gameType = _toggler.value;
         ShowMain();
+    }
+
+    private void OnToggle(bool multi)
+    {
+        _gameType = multi;
     }
 
     private void ShowMain()
@@ -47,12 +68,14 @@ public class UIMainScene : MonoBehaviour
         
         if (_gameType)
         {
+            // multi
             pickedGameType = 1;
             PlayerPrefs.SetInt(KeyStorage.GameTypeKey, pickedGameType);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
         {
+            // solo
             pickedGameType = 0;
             PlayerPrefs.SetInt(KeyStorage.GameTypeKey, pickedGameType);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
