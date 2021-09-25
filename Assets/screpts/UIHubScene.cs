@@ -101,7 +101,7 @@ public class UIHubScene : MonoBehaviour
             PlayerPrefs.SetInt(KeyStorage.LevelIndexKey, pickedLevel);
             PlayerPrefs.Save();
 
-            StartCoroutine(playgame());
+            StartCoroutine(playMultigame());
         }
 
 
@@ -111,6 +111,12 @@ public class UIHubScene : MonoBehaviour
         audioSr.PlayOneShot(ClicAu);
         yield return new WaitForSeconds(0.4f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    IEnumerator playMultigame()
+    {
+        audioSr.PlayOneShot(ClicAu);
+        yield return new WaitForSeconds(0.4f);
+        SceneManager.LoadScene("GameScenóMulti");
     }
 
         public void OnBackPress()

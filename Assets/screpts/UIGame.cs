@@ -86,7 +86,7 @@ public class UIGame : MonoBehaviour
 
     public void OnExitPress()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("UROVNI");
     }
 
     private void SetField()
