@@ -13,8 +13,8 @@ public class lvl1Scr : MonoBehaviour
     private AudioSource audioSr;
     public GameObject audioSrObj;
     public AudioClip ClicAu;
-    public GameObject Uimenger;
-    public UIGame ui = new UIGame();
+    
+    
     public string endtxt;
     public GameObject wind;
     public Sprite virus;
@@ -24,7 +24,7 @@ public class lvl1Scr : MonoBehaviour
     {
         TextCont.GetComponent<Text>().text = txt[Comix];
         audioSr = audioSrObj.GetComponent<AudioSource>();
-        ui = Uimenger.GetComponent<UIGame>();
+        
 
     }
 
