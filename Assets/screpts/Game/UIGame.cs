@@ -35,9 +35,8 @@ public class UIGame : MonoBehaviour
 
     private int _gameCount;
     public int _gameScore;
-    
-    
-    
+
+
     public int dif1;
     public int dif2;
 
@@ -67,10 +66,9 @@ public class UIGame : MonoBehaviour
 
         if(_timer < 0 && _sportMode == 1)
         {
-            
-                SaveScore();
-            
+            SaveScore();
             StartCoroutine(SportRoundEnd());
+
         }
     }
 
@@ -204,6 +202,10 @@ public class UIGame : MonoBehaviour
             {
                 _finsalScoreText.text = "Your Score: " + _gameScore;
             }
+        }
+        else
+        {
+            _finsalScoreText.text = "Your Score: " + _gameScore;
         }
 
         
