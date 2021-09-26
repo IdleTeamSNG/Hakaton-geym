@@ -75,12 +75,12 @@ public class UIHubScene : MonoBehaviour
     }
     public void OnSportpress(int dif)
     {
-        SaveScript.StoreIntValue(SaveScript.gameDifficulty, dif);
+        SaveScript.StoreIntValue(SaveScript.GameDifficulty, dif);
          StartCoroutine(playgame());
     }
     public void OnmultiPress(int dif)
     {
-        SaveScript.StoreIntValue(SaveScript.gameDifficulty, dif);
+        SaveScript.StoreIntValue(SaveScript.GameDifficulty, dif);
         SaveScript.StoreIntValue(SaveScript.GameTypeKey, _gameType);
         StartCoroutine(playMultigame());
     }
