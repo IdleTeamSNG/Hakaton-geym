@@ -8,7 +8,12 @@ public class UIGame : MonoBehaviour
 { 
     Core cr = new Core();
     List<int> Case = new List<int>();
-   
+
+    [Header("Result UI Components")]
+    [SerializeField] private GameObject _face;
+    [SerializeField] private Text _finsalScoreText;
+
+    [Header("UI Components")]
     [SerializeField] private Text _questionTxt;
     [SerializeField] private Text _answerTxt;
     [SerializeField] private Text _counterTxt;
@@ -43,7 +48,7 @@ public class UIGame : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("music"));
         audioSr = audioSrObj.GetComponent<AudioSource>();
 
-        _gameDifficulty = SaveScript.GetStoredInt(SaveScript.gameDifficulty);
+        _gameDifficulty = SaveScript.GetStoredInt(SaveScript.GameDifficulty);
 
         _gameCount = 0;
         _gameScore = 0;
@@ -62,7 +67,8 @@ public class UIGame : MonoBehaviour
 
         if(_timer < 0 && _sportMode == 1)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            SaveScore();
+            StartCoroutine(SportRoundEnd());
         }
     }
 
@@ -107,6 +113,10 @@ public class UIGame : MonoBehaviour
         {
             _timerText.gameObject.SetActive(true);
         }
+
+
+        _face.SetActive(true);
+        _finsalScoreText.gameObject.SetActive(false);
     }
 
     private void RefreshField()
@@ -154,9 +164,7 @@ public class UIGame : MonoBehaviour
             _resultTxt.text = "Ne Molodec";
         }
 
-        yield return new WaitForSeconds(3.0f);
-
-       
+        yield return new WaitForSeconds(3.0f);       
        
         
             RefreshField();
@@ -168,5 +176,33 @@ public class UIGame : MonoBehaviour
         _questionTxt.gameObject.SetActive(active);
         _answerTxt.gameObject.SetActive(active);
         _resultTxt.gameObject.SetActive(!active);
+    }
+
+    private IEnumerator SportRoundEnd()
+    {
+        _timerText.gameObject.SetActive(false);
+        yield return new WaitForSeconds(4.0f);
+        Navigation.NavigateHub();
+    }
+
+    private void SaveScore()
+    {
+        int currentBest = SaveScript.GetStoredInt(SaveScript.BestScoreKey);
+
+        _face.SetActive(false);
+        _finsalScoreText.gameObject.SetActive(true);
+
+        if (_gameScore > currentBest)
+        {
+            SaveScript.StoreIntValue(SaveScript.BestScoreKey, _gameScore);
+            _finsalScoreText.text = "You have new best: " + _gameScore;
+        }
+        else
+        {
+            _finsalScoreText.text = "Your Score: " + _gameScore;
+        }
+
+        
+        
     }
 }

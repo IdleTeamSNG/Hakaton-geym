@@ -5,7 +5,8 @@ using UnityEngine;
 public class SaveScript 
 {
     public static readonly string GameTypeKey = "GameType";
-    public static readonly string gameDifficulty = "GameDifficulty";
+    public static readonly string GameDifficulty = "GameDifficulty";
+    public static readonly string BestScoreKey = "BestScore";
     public static void StoreIntValue(string key, int value)
     {
         PlayerPrefs.SetInt(key, value);
