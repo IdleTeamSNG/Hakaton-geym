@@ -1766,7 +1766,6 @@ MonoBehaviour:
   _gameType: 0
   _sportMode: 1
   _gameScore: 0
-  lvl1scObj: {fileID: 0}
   dif1: 20
   dif2: 2
 --- !u!4 &994503214

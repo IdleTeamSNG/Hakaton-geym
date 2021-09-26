@@ -15,7 +15,7 @@ public class UIHubScene : MonoBehaviour
     public GameObject audioSrObj;
     public AudioClip ClicAu;
 
-    private int _gameType; // 0 normal, 1 multiplayer
+    public int _gameType; // 0 normal, 1 multiplayer
     private bool _sportMode;
 
     private void OnEnable()
@@ -81,6 +81,7 @@ public class UIHubScene : MonoBehaviour
     public void OnmultiPress(int dif)
     {
         PlayerPrefs.SetInt(KeyStorage.gameDifficulty, dif);
+         PlayerPrefs.SetInt(KeyStorage.GameTypeKey,_gameType);
         StartCoroutine(playMultigame());
     }
     

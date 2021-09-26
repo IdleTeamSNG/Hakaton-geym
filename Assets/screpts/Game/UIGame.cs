@@ -30,7 +30,7 @@ public class UIGame : MonoBehaviour
 
     private int _gameCount;
     public int _gameScore;
-    public GameObject lvl1scObj;
+    
     
     
     public int dif1;
@@ -94,6 +94,7 @@ public class UIGame : MonoBehaviour
     public void OnExitPress()
     {
         SceneManager.LoadScene("UROVNI");
+        PlayerPrefs.SetInt(KeyStorage.GameTypeKey, _gameType);
     }
 
     private void SetField()
