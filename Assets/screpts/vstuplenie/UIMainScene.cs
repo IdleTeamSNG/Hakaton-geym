@@ -99,12 +99,12 @@ public class UIMainScene : MonoBehaviour
 
     public void OnSettingsPress()
     {
-        SceneManager.LoadScene("settings");
+        Navigation.NavigateSettings();
     }
 
     public void OnCreditsPress()
     {
-        SceneManager.LoadScene("credits");
+        Navigation.NavigateCredits();
     }
 
     public void OnBackPress()
