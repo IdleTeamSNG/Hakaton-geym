@@ -630,7 +630,7 @@ MonoBehaviour:
     \u043F\u043E\u0431\u0435\u0434\u0438\u043C!"
   wind: {fileID: 920031959}
   virus: {fileID: 21300000, guid: f1a5c80a624967547af73e66e20c09f4, type: 3}
-  uimenager: {fileID: 0}
+  uimenager: {fileID: 1826090248}
   ui: {fileID: 0}
 --- !u!1 &240392808
 GameObject:
