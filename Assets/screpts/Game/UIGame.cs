@@ -67,7 +67,9 @@ public class UIGame : MonoBehaviour
 
         if(_timer < 0 && _sportMode == 1)
         {
-            SaveScore();
+            
+                SaveScore();
+            
             StartCoroutine(SportRoundEnd());
         }
     }
