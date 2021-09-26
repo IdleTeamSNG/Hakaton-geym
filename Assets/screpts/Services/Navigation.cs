@@ -5,6 +5,8 @@ public class Navigation : MonoBehaviour
 {
     private const string MainMenu = "VSTUPLENIE";
     private const string HubScene = "UROVNI";
+    private const string GameScene = "GameScene";
+    private const string GameSceneMulti = "GameScenóMulti"; 
 
     public static void NavigateMain()
     {
@@ -14,5 +16,15 @@ public class Navigation : MonoBehaviour
     public static void NavigateHub()
     {
         SceneManager.LoadScene(HubScene);
+    }
+
+    public static void NavigateGameScene()
+    {
+        SceneManager.LoadScene(GameScene);
+    }
+
+    public static void NavigateGameSceneMulti()
+    {
+        SceneManager.LoadScene(GameSceneMulti);
     }
 }

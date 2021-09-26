@@ -30,7 +30,7 @@ public class UIHubScene : MonoBehaviour
 
     private void Start()
     {
-        _gameType = PlayerPrefs.GetInt(KeyStorage.GameTypeKey);
+        _gameType = SaveScript.GetStoredInt(SaveScript.GameTypeKey);
         audioSr = audioSrObj.GetComponent<AudioSource>();
         
         if(_gameType == 0)
@@ -75,13 +75,13 @@ public class UIHubScene : MonoBehaviour
     }
     public void OnSportpress(int dif)
     {
-        PlayerPrefs.SetInt(KeyStorage.gameDifficulty, dif);
+        SaveScript.StoreIntValue(SaveScript.gameDifficulty, dif);
          StartCoroutine(playgame());
     }
     public void OnmultiPress(int dif)
     {
-        PlayerPrefs.SetInt(KeyStorage.gameDifficulty, dif);
-         PlayerPrefs.SetInt(KeyStorage.GameTypeKey,_gameType);
+        SaveScript.StoreIntValue(SaveScript.gameDifficulty, dif);
+        SaveScript.StoreIntValue(SaveScript.GameTypeKey, _gameType);
         StartCoroutine(playMultigame());
     }
     
@@ -89,13 +89,13 @@ public class UIHubScene : MonoBehaviour
     {
         audioSr.PlayOneShot(ClicAu);
         yield return new WaitForSeconds(0.4f);
-        SceneManager.LoadScene("GameScene");
+        Navigation.NavigateGameScene();
     }
     IEnumerator playMultigame()
     {
         audioSr.PlayOneShot(ClicAu);
         yield return new WaitForSeconds(0.4f);
-        SceneManager.LoadScene("GameScenóMulti");
+        Navigation.NavigateGameSceneMulti();
     }
 
         public void OnBackPress()
@@ -106,7 +106,7 @@ public class UIHubScene : MonoBehaviour
     {
         audioSr.PlayOneShot(ClicAu);
         yield return new WaitForSeconds(0.4f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        Navigation.NavigateMain();
 
     }
 

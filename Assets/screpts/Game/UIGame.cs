@@ -42,8 +42,8 @@ public class UIGame : MonoBehaviour
         
         Destroy(GameObject.FindGameObjectWithTag("music"));
         audioSr = audioSrObj.GetComponent<AudioSource>();
-        
-        _gameDifficulty = PlayerPrefs.GetInt(KeyStorage.gameDifficulty);
+
+        _gameDifficulty = SaveScript.GetStoredInt(SaveScript.gameDifficulty);
 
         _gameCount = 0;
         _gameScore = 0;
@@ -93,8 +93,8 @@ public class UIGame : MonoBehaviour
 
     public void OnExitPress()
     {
-        SceneManager.LoadScene("UROVNI");
-        PlayerPrefs.SetInt(KeyStorage.GameTypeKey, _gameType);
+        Navigation.NavigateHub();
+        SaveScript.StoreIntValue(SaveScript.GameTypeKey, _gameType);
     }
 
     private void SetField()

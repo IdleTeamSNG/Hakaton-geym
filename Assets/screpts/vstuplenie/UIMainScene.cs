@@ -93,9 +93,8 @@ public class UIMainScene : MonoBehaviour
     {
         audioSr.PlayOneShot(ClicAu);
         yield return new WaitForSeconds(0.4f);
-        PlayerPrefs.SetInt(KeyStorage.GameTypeKey, pickedGameType);
-        PlayerPrefs.Save();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SaveScript.StoreIntValue(SaveScript.GameTypeKey, pickedGameType);
+        Navigation.NavigateHub();
     }
 
     public void OnSettingsPress()
