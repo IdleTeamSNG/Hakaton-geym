@@ -20,6 +20,7 @@ public class lvl1Scr : MonoBehaviour
     public Sprite virus;
     public GameObject uimenager;
     public UIGame ui;
+    public bool Flag = true;
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +36,9 @@ public class lvl1Scr : MonoBehaviour
     void Update()
     {
 
-        if (ui._gameScore == 5)
+        if (ui._gameScore == 5 && Flag)
         {
+            Flag = false;
             EndLvl();
         }
     }
