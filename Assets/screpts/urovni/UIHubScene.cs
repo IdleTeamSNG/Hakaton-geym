@@ -10,6 +10,7 @@ public class UIHubScene : MonoBehaviour
     [SerializeField] private GameObject _sportLayer;
     [SerializeField] private GameObject _multiplayerLayer;
     [SerializeField] private togle _toggler;
+    [SerializeField] private Text[] _bestScores;
 
     private AudioSource audioSr;
     public GameObject audioSrObj;
@@ -44,7 +45,7 @@ public class UIHubScene : MonoBehaviour
             HideAllLayers();
             _multiplayerLayer.SetActive(true);
             _toggler.gameObject.SetActive(false);
-        }
+        }        
 
     }
 
@@ -55,6 +56,7 @@ public class UIHubScene : MonoBehaviour
             _sportMode = true;
             HideAllLayers();
             _sportLayer.SetActive(true);
+            SetBestScores();
         }
         else
         {
@@ -116,5 +118,13 @@ public class UIHubScene : MonoBehaviour
         _normalLayer.SetActive(false);
         _sportLayer.SetActive(false);
         _multiplayerLayer.SetActive(false);
+    }
+
+    private void SetBestScores()
+    {
+        for(int i = 0; i <_bestScores.Length; i++)
+        {
+            _bestScores[i].text = SaveScript.GetBestScore(i).ToString();
+        }
     }
 }

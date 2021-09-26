@@ -189,14 +189,14 @@ public class UIGame : MonoBehaviour
 
     private void SaveScore()
     {
-        int currentBest = SaveScript.GetStoredInt(SaveScript.BestScoreKey);
+        int currentBest = SaveScript.GetBestScore(_gameDifficulty);
 
         _face.SetActive(false);
         _finsalScoreText.gameObject.SetActive(true);
 
         if (_gameScore > currentBest)
         {
-            SaveScript.StoreIntValue(SaveScript.BestScoreKey, _gameScore);
+            SaveScript.SaveBestScore(_gameDifficulty, _gameScore);
             _finsalScoreText.text = "You have new best: " + _gameScore;
         }
         else
