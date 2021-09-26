@@ -76,12 +76,12 @@ public class UIHubScene : MonoBehaviour
     public void OnSportpress(int dif)
     {
         PlayerPrefs.SetInt(KeyStorage.gameDifficulty, dif);
-        playgame();
+         StartCoroutine(playgame());
     }
     public void OnmultiPress(int dif)
     {
         PlayerPrefs.SetInt(KeyStorage.gameDifficulty, dif);
-        playMultigame();
+        StartCoroutine(playMultigame());
     }
     
     IEnumerator playgame()

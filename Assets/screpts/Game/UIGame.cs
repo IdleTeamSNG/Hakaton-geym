@@ -32,14 +32,14 @@ public class UIGame : MonoBehaviour
     public int _gameScore;
     public GameObject lvl1scObj;
     
-    public lvl1Scr lvl1sc;
+    
     public int dif1;
     public int dif2;
 
 
     void Start()
     {
-        lvl1sc = lvl1scObj.GetComponent<lvl1Scr>();
+        
         Destroy(GameObject.FindGameObjectWithTag("music"));
         audioSr = audioSrObj.GetComponent<AudioSource>();
         
