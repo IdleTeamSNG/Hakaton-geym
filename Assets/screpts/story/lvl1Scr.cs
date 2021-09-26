@@ -63,7 +63,7 @@ public class lvl1Scr : MonoBehaviour
         }
         else if (Comix == 8)
         {
-            SceneManager.LoadScene("UROVNI");
+            SceneManager.LoadScene("lvl2");
     
         }
 
