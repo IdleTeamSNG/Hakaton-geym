@@ -166,7 +166,7 @@ public class UIGame : MonoBehaviour
             _resultTxt.text = "Ne Molodec";
         }
 
-        yield return new WaitForSeconds(3.0f);       
+        yield return new WaitForSeconds(1);       
        
         
             RefreshField();
@@ -193,15 +193,17 @@ public class UIGame : MonoBehaviour
 
         _face.SetActive(false);
         _finsalScoreText.gameObject.SetActive(true);
-
-        if (_gameScore > currentBest)
+        if (_gameType == 0)
         {
-            SaveScript.SaveBestScore(_gameDifficulty, _gameScore);
-            _finsalScoreText.text = "You have new best: " + _gameScore;
-        }
-        else
-        {
-            _finsalScoreText.text = "Your Score: " + _gameScore;
+            if (_gameScore > currentBest)
+            {
+                SaveScript.SaveBestScore(_gameDifficulty, _gameScore);
+                _finsalScoreText.text = "You have new best: " + _gameScore;
+            }
+            else
+            {
+                _finsalScoreText.text = "Your Score: " + _gameScore;
+            }
         }
 
         
