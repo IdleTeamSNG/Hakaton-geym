@@ -10,7 +10,7 @@ public class CoreN : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        v = GetNewQuestionljgic1Vichitanie(10, 200, 5, 50, 2);
+        v = GetNewQuestionljgic2Vichitanie(10, 200, 5, 40, 3);
         foreach(int elem in v)
         {
             print(elem);
@@ -31,7 +31,7 @@ public class CoreN : MonoBehaviour
             qestion.Add(value);
             answer += value;
         }
-        
+        qestion.Add(0);
         return qestion;
     }
     public List<int> GetNewQuestionljgic1Vichitanie(int dif1, int dif2, int ostatoc1, int ostatoc2, int size)
@@ -66,11 +66,45 @@ public class CoreN : MonoBehaviour
        
         answer -= vichit;
 
-       
+        qestion.Add(0);
         return qestion;
+
+
+    }
+    public List<int> GetNewQuestionljgic2Clojenie(int dif1, int dif2, int size)
+    {
+        int answerprom = 0;
+        int x = 0;
+        
+        List<int> qestion =  GetNewQuestionljgic1Clojenie(dif1, dif2, size);
+       
+        x = Random.Range(0, size);
+        answerprom = qestion[x];
+        qestion[x] = 0;
+        qestion[size] = answer;
+        answer = answerprom;
+        return qestion;
+
+
+
+
 
 
     }
 
 
-}
+    public List<int> GetNewQuestionljgic2Vichitanie(int dif1, int dif2, int ostatoc1, int ostatoc2, int size)
+    {
+        int answerprom = 0;
+        int x = 0;
+
+        List<int> qestion = GetNewQuestionljgic1Vichitanie(dif1, dif2, ostatoc1, ostatoc2, size);
+        x = Random.Range(0, size);
+        answerprom = qestion[x];
+        qestion[x] = 0;
+        qestion[size + 2] = answer;
+        answer = answerprom;
+        return qestion;
+    }
+
+    }
