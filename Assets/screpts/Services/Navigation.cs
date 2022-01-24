@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Navigation : MonoBehaviour
+public  class Navigation : MonoBehaviour
 {
     private const string MainMenu = "MainMenu";
     private const string HubScene = "UROVNI";

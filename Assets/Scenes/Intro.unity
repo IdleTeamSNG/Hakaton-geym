@@ -496,6 +496,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1319274909}
     m_Modifications:
+    - target: {fileID: 1751960173352541416, guid: 8f43a59122a3a684aa600652c2b452ea, type: 3}
+      propertyPath: SceneName
+      value: MainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 1751960173352541420, guid: 8f43a59122a3a684aa600652c2b452ea, type: 3}
       propertyPath: m_Name
       value: Loader
