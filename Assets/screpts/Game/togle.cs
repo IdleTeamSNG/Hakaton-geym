@@ -10,19 +10,20 @@ public class togle : MonoBehaviour
     [Tooltip("Togle value.")]
     public bool value;
 
-    public AudioSource audioSr;
     
-    public AudioClip ClicAu;
+    
+   
 
     private static readonly int Value = Animator.StringToHash(name: "Value");
 
     public event Action<bool> OnToggle;
+    public GameObject AuServ;
 
 
     
     private void Awake()
     {
-        
+        AuServ.GetComponent<Audio>().PlayClick();
         if (this.animator == null)
         {
             this.animator = GetComponent<Animator>();
@@ -31,7 +32,8 @@ public class togle : MonoBehaviour
 
     public void Togle()
     {
-        audioSr.PlayOneShot(ClicAu);
+        AuServ.GetComponent<Audio>().PlayClick();
+       
         this.value = !this.value;
         this.animator.SetBool(id: Value, this.value);
         OnToggle?.Invoke(value);

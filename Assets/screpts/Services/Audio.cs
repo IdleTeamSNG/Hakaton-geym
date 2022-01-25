@@ -13,7 +13,7 @@ public class Audio : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         As = gameObject.GetComponent<AudioSource>();
         DontDestroyOnLoad(this.gameObject);
