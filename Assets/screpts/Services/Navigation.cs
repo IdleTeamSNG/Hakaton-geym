@@ -11,6 +11,8 @@ public  class Navigation : MonoBehaviour
     private const string Credits = "credits";
     private const string Ruls = "Ruls";
     private const string Players = "Players";
+    
+    private const string SoloMenu = "SoloMenu";
 
     public static void NavigateMain()
     {
@@ -52,5 +54,9 @@ public  class Navigation : MonoBehaviour
     public static void NavigatePlayers()
     {
         SceneManager.LoadScene(Players);
+    }
+    public static void NavigateSoloMenu()
+    {
+        SceneManager.LoadScene(SoloMenu);
     }
 }
