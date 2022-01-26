@@ -480,7 +480,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6824285316495247365}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -513,7 +513,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoAnim: {fileID: 8715456297193235407}
   isOpen: 0
-  AktNumb: 0
+  EtNumb: 0
+  Akt: {fileID: 0}
 --- !u!1 &8715456297193235407
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,6 +585,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoundBut (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2719369778713185206, guid: 7fe9baf3875032746a42b28af4a023aa, type: 3}
+      propertyPath: Et
+      value: 
+      objectReference: {fileID: 6824285316495247365}
     - target: {fileID: 4851562367746587445, guid: 7fe9baf3875032746a42b28af4a023aa, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -698,6 +703,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoundBut (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2719369778713185206, guid: 7fe9baf3875032746a42b28af4a023aa, type: 3}
+      propertyPath: Et
+      value: 
+      objectReference: {fileID: 6824285316495247365}
     - target: {fileID: 4851562367746587445, guid: 7fe9baf3875032746a42b28af4a023aa, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -812,6 +821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoundBut
       objectReference: {fileID: 0}
+    - target: {fileID: 2719369778713185206, guid: 7fe9baf3875032746a42b28af4a023aa, type: 3}
+      propertyPath: Et
+      value: 
+      objectReference: {fileID: 6824285316495247365}
     - target: {fileID: 4851562367746587445, guid: 7fe9baf3875032746a42b28af4a023aa, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -926,6 +939,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoundBut (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2719369778713185206, guid: 7fe9baf3875032746a42b28af4a023aa, type: 3}
+      propertyPath: Et
+      value: 
+      objectReference: {fileID: 6824285316495247365}
     - target: {fileID: 4851562367746587445, guid: 7fe9baf3875032746a42b28af4a023aa, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -10,6 +10,10 @@ public class EtamScr : MonoBehaviour
     public bool isOpen;
     public int EtNumb;
     public static event Action<int> OpenEtEv;
+    public event Action EtClose;
+    public event Action EtOpen;
+    public GameObject Akt;
+    
     public void Start()
     {
         animator = GoAnim.GetComponent<Animator>();
@@ -30,10 +34,12 @@ public class EtamScr : MonoBehaviour
     public void Open()
     {
         OpenEtEv?.Invoke(EtNumb);
+        EtOpen?.Invoke();
         animator.SetBool("isOpen", true);
     }
     public void Close()
     {
+        EtClose?.Invoke();
         animator.SetBool("isOpen", false);
     }
     public void OnOpenOther(int Akt)
@@ -49,12 +55,28 @@ public class EtamScr : MonoBehaviour
     }
     public void OnEnable()
     {
+        Akt.GetComponent<button1>().ActClose += onAktClose;
+        Akt.GetComponent<button1>().ActOpen += onAktOpen;
         OpenEtEv += OnOpenOther;
 
 
     }
     public void OnDisable()
     {
+        Akt.GetComponent<button1>().ActClose -= onAktClose;
+        Akt.GetComponent<button1>().ActOpen -= onAktOpen;
         OpenEtEv -= OnOpenOther;
+    }
+    public void onAktClose()
+    {
+        Close();
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+    }
+    public void onAktOpen()
+    {
+        
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+
     }
 }

@@ -225,6 +225,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &245344959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7952948917800423152, guid: d0662ddbf4dae5e47b224caba6d7854b, type: 3}
+  m_PrefabInstance: {fileID: 7952948917078109287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &366747354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1060,17 +1065,33 @@ PrefabInstance:
     m_TransformParent: {fileID: 1546166724}
     m_Modifications:
     - target: {fileID: 383983903649611155, guid: d0662ddbf4dae5e47b224caba6d7854b, type: 3}
+      propertyPath: Akt
+      value: 
+      objectReference: {fileID: 245344959}
+    - target: {fileID: 383983903649611155, guid: d0662ddbf4dae5e47b224caba6d7854b, type: 3}
       propertyPath: EtNumb
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1113191933317260880, guid: d0662ddbf4dae5e47b224caba6d7854b, type: 3}
+      propertyPath: Akt
+      value: 
+      objectReference: {fileID: 245344959}
     - target: {fileID: 1113191933317260880, guid: d0662ddbf4dae5e47b224caba6d7854b, type: 3}
       propertyPath: EtNumb
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1177373204930426891, guid: d0662ddbf4dae5e47b224caba6d7854b, type: 3}
+      propertyPath: Akt
+      value: 
+      objectReference: {fileID: 245344959}
+    - target: {fileID: 1177373204930426891, guid: d0662ddbf4dae5e47b224caba6d7854b, type: 3}
       propertyPath: EtNumb
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6045222985636029450, guid: d0662ddbf4dae5e47b224caba6d7854b, type: 3}
+      propertyPath: Akt
+      value: 
+      objectReference: {fileID: 245344959}
     - target: {fileID: 6045222985636029450, guid: d0662ddbf4dae5e47b224caba6d7854b, type: 3}
       propertyPath: EtNumb
       value: 3
