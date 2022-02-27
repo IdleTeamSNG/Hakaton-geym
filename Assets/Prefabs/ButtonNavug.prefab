@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2206322645571424735}
   - component: {fileID: 2650030224063495491}
   - component: {fileID: 2909302613120509490}
+  - component: {fileID: 2368654733713663258}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -28,13 +29,14 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2370960707529308473}
   m_Father: {fileID: 8277301019396715679}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -203, y: 0}
+  m_AnchoredPosition: {x: -209.72, y: 0.55005}
   m_SizeDelta: {x: 829, y: 144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2650030224063495491
@@ -75,6 +77,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &2368654733713663258
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80321658246775406}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ef2f6dad8e203794dae3b40914cf66f9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6090837058191570987
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,13 +125,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8277301019396715679}
+  m_Father: {fileID: 2206322645571424735}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.61, y: -23.2}
-  m_SizeDelta: {x: 242.96, y: 61.44}
+  m_AnchoredPosition: {x: 194.54422, y: -24.036406}
+  m_SizeDelta: {x: 251.8715, y: 74.8073}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8132003287230532023
 CanvasRenderer:
@@ -165,6 +186,7 @@ GameObject:
   - component: {fileID: 8277301019396715679}
   - component: {fileID: 2368841297144338107}
   - component: {fileID: 6024310038083934025}
+  - component: {fileID: 315341185695355936}
   m_Layer: 5
   m_Name: ButtonNavug
   m_TagString: Untagged
@@ -183,7 +205,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2370960707529308473}
   - {fileID: 2206322645571424735}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -269,3 +290,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 315341185695355936}
+        m_TargetAssemblyTypeName: ButtonAnimScr, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &315341185695355936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8991884227931261099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c596e73c64980c340a26893264b534fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targ: {fileID: 80321658246775406}
+  t: 2
