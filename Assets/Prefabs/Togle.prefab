@@ -248,8 +248,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3.35, y: 1.37}
+  m_AnchoredPosition: {x: 0, y: -0.005006}
+  m_SizeDelta: {x: 3.35, y: 1.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1061120625965088678
 SpriteRenderer:
@@ -384,8 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1061120626383964309}
   value: 0
-  audioSr: {fileID: 0}
-  ClicAu: {fileID: 8300000, guid: 246c285c4eea81a428ef9ac3c919455d, type: 3}
+  AuServ: {fileID: 0}
 --- !u!222 &1061120626383964308
 CanvasRenderer:
   m_ObjectHideFlags: 0

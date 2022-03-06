@@ -51,8 +51,9 @@ public  class Navigation : MonoBehaviour
     {
         SceneManager.LoadScene(Ruls);
     }
-    public static void NavigatePlayers()
+    public static void NavigatePlayers()   
     {
+        
         SceneManager.LoadScene(Players);
     }
     public static void NavigateSoloMenu()
