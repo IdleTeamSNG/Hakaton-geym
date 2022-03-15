@@ -9,6 +9,7 @@ public class Audio : MonoBehaviour
 
 
     public  AudioClip Click;
+    public float Vollum = 0.5f;
 
 
 
@@ -18,7 +19,24 @@ public class Audio : MonoBehaviour
         As = gameObject.GetComponent<AudioSource>();
         DontDestroyOnLoad(this.gameObject);
 
+
     }
+    public void Start()
+    {
+        ChangeVall();
+    }
+    public void ChangeVall()
+    {
+        if (PlayerPrefs.HasKey("VollApl"))
+
+        {
+            Vollum = PlayerPrefs.GetFloat("VollApl");
+
+        }
+
+        As.volume = Vollum;
+    }
+
     public void OnDestCheck()
     {
         StartCoroutine(destAu());
