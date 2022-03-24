@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SoloMenu.unity
     guid: d9a04097787e9144d9ced9f059c87607
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: cd6e75fff8100124e8fa69e7c9f131b9
   m_configObjects: {}
