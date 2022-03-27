@@ -18,6 +18,7 @@ public class LevelJsonController : MonoBehaviour
     void Start()
     {
         LevelScenarioCl = JsonUtility.FromJson<LevelScenario>(File.ReadAllText(Application.streamingAssetsPath+"/Level"+System.Convert.ToString(LevelNumb)+".json"));
+        next();
     }
 
     [System.Serializable]
@@ -32,23 +33,26 @@ public class LevelJsonController : MonoBehaviour
     public void next()
     {
         
-        Instuction = LevelScenarioCl.Scenario[0].Split('/');
+        Instuction = LevelScenarioCl.Scenario[iter].Split('/');
        switch(Instuction[0] )
         {
             case "1":
-                Qestion(Instuction[1]);
+                
+                Qestion?.Invoke(Argument: Instuction[1]);
                 break;
 
             case "2":
-                Messege(Instuction[1]);
+                Messege?.Invoke(Instuction[1]);
                 break;
 
             case "3":
-                Image(Instuction[1]);
+                Image?.Invoke(Instuction[1]);
                 break;
 
         }
+        iter++;
 
-        
+
+
     }
 }

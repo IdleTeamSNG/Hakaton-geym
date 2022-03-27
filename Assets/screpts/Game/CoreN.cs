@@ -6,21 +6,21 @@ public class CoreN : MonoBehaviour
 {
     private int value;
     List<int> v = new List<int>();
-    protected int answer = 0;
+    protected static int answer = 0;
     // Start is called before the first frame update
     void Start()
     {
-        v = GetNewQuestionljgic2Delenie(1, 10, 5);
-        foreach (int elem in v)
-        {
-            print(elem);
-        }
-        print(answer);
+        //v = GetNewQuestionljgic2Delenie(1, 10, 5);
+        //foreach (int elem in v)
+        //{
+        //    print(elem);
+        //}
+        //print(answer);
 
 
     }
 
-    public List<int> GetNewQuestionljgic1Clojenie(int dif1, int dif2, int size)
+    public static List<int> GetNewQuestionljgic1Clojenie(int dif1, int dif2, int size)
     {
         answer = 0;
         List<int> qestion = new List<int>();
@@ -34,7 +34,7 @@ public class CoreN : MonoBehaviour
         qestion.Add(0);
         return qestion;
     }
-    public List<int> GetNewQuestionljgic1Vichitanie(int dif1, int dif2, int ostatoc1, int ostatoc2, int size)
+    public static List<int> GetNewQuestionljgic1Vichitanie(int dif1, int dif2, int ostatoc1, int ostatoc2, int size)
     {
         answer = 0;
         List<int> qestion = new List<int>();
@@ -71,7 +71,7 @@ public class CoreN : MonoBehaviour
 
 
     }
-    public List<int> GetNewQuestionljgic2Clojenie(int dif1, int dif2, int size)
+    public static List<int> GetNewQuestionljgic2Clojenie(int dif1, int dif2, int size)
     {
         int answerprom = 0;
         int x = 0;
@@ -93,7 +93,7 @@ public class CoreN : MonoBehaviour
     }
 
 
-    public List<int> GetNewQuestionljgic2Vichitanie(int dif1, int dif2, int ostatoc1, int ostatoc2, int size)
+    public static List<int> GetNewQuestionljgic2Vichitanie(int dif1, int dif2, int ostatoc1, int ostatoc2, int size)
     {
         int answerprom = 0;
         int x = 0;
@@ -106,7 +106,7 @@ public class CoreN : MonoBehaviour
         answer = answerprom;
         return qestion;
     }
-    public List<int> GetNewQuestionljgic1Umnojenie(int dif1, int dif2, int size)
+    public static List<int> GetNewQuestionljgic1Umnojenie(int dif1, int dif2, int size)
     {
 
         answer = 1;
@@ -123,7 +123,7 @@ public class CoreN : MonoBehaviour
         return qestion;
 
     }
-    public List<int> GetNewQuestionljgic2Umnojenie(int dif1, int dif2, int size)
+    public static List<int> GetNewQuestionljgic2Umnojenie(int dif1, int dif2, int size)
     {
         int answerprom = 0;
         int x = 0;
@@ -143,7 +143,7 @@ public class CoreN : MonoBehaviour
 
 
     }
-    public List<int> GetNewQuestionljgic1Delenie(int dif1, int dif2, int size)
+    public static List<int> GetNewQuestionljgic1Delenie(int dif1, int dif2, int size)
     {
         List<int> qestion = new List<int>();
        
@@ -157,7 +157,7 @@ public class CoreN : MonoBehaviour
 
 
     }
-    public List<int> GetNewQuestionljgic2Delenie(int dif1, int dif2, int size)
+    public static List<int> GetNewQuestionljgic2Delenie(int dif1, int dif2, int size)
     {
         int answerprom = 0;
         int x = 0;
