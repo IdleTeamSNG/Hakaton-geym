@@ -9,7 +9,7 @@ using System.Linq;
 public class QestionController : MonoBehaviour
 {
     public List<int> qestion;
-    public List<string> QestionStrList;
+    
     public string QestionStr;
     public GameObject txt;
 
@@ -28,27 +28,74 @@ public class QestionController : MonoBehaviour
             case ("+", "1"):
                
                 qestion = CoreN.GetNewQuestionljgic1Clojenie(System.Convert.ToInt32(instruction[2]), System.Convert.ToInt32(instruction[3]), System.Convert.ToInt32(instruction[4]));
-                QestionStrList = qestion.Select(i => i.ToString()).ToList();
-                
-                QestionStrList[QestionStrList.IndexOf("0")] = "?";
-                
-                
-                
-                QestionStr = String.Join("+", QestionStrList.ToArray(), 0, QestionStrList.Count - 1) + "=" + QestionStrList[QestionStrList.Count - 1]; //готовая строка примера
-               
-                txt.GetComponent<Text>().text = QestionStr;// тестовый вывод
-                
 
+                break;
+            case ("+", "2"):
+
+                qestion = CoreN.GetNewQuestionljgic2Clojenie(System.Convert.ToInt32(instruction[2]), System.Convert.ToInt32(instruction[3]), System.Convert.ToInt32(instruction[4]));
+
+                break;
+            case ("-", "1"):
+
+                qestion = CoreN.GetNewQuestionljgic1Vichitanie(System.Convert.ToInt32(instruction[2]), System.Convert.ToInt32(instruction[3]), System.Convert.ToInt32(instruction[4]), System.Convert.ToInt32(instruction[5]), System.Convert.ToInt32(instruction[6]));
+
+                break;
+            case ("-", "2"):
+
+                qestion = CoreN.GetNewQuestionljgic2Vichitanie(System.Convert.ToInt32(instruction[2]), System.Convert.ToInt32(instruction[3]), System.Convert.ToInt32(instruction[4]), System.Convert.ToInt32(instruction[5]), System.Convert.ToInt32(instruction[6]));
+
+                break;
+            case ("*", "1"):
+
+                qestion = CoreN.GetNewQuestionljgic1Umnojenie(System.Convert.ToInt32(instruction[2]), System.Convert.ToInt32(instruction[3]), System.Convert.ToInt32(instruction[4]));
+
+                break;
+            case ("*", "2"):
+
+                qestion = CoreN.GetNewQuestionljgic2Umnojenie(System.Convert.ToInt32(instruction[2]), System.Convert.ToInt32(instruction[3]), System.Convert.ToInt32(instruction[4]));
+
+                break;
+            case ("%", "1"):
+
+                qestion = CoreN.GetNewQuestionljgic1Delenie(System.Convert.ToInt32(instruction[2]), System.Convert.ToInt32(instruction[3]), System.Convert.ToInt32(instruction[4]));
+
+                break;
+            case ("%", "2"):
+
+                qestion = CoreN.GetNewQuestionljgic2Delenie(System.Convert.ToInt32(instruction[2]), System.Convert.ToInt32(instruction[3]), System.Convert.ToInt32(instruction[4]));
 
                 break;
 
-                
+
+
+
+
 
 
         }
+        QestionStr = Prepare(qestion, instruction[0]);
+        txt.GetComponent<Text>().text = QestionStr;// тестовый вывод
     }
     public void OnDisable()
     {
         LevelJsonController.Qestion -= NewQestion;
+    }
+    public string Prepare(List<int> qestion, string znak) // форматирование строки до нормального сотояния для вывода
+    {
+        List<string> QestionStrList;
+        string QestionStr;
+        QestionStrList = qestion.Select(i => i.ToString()).ToList();
+
+        QestionStrList[QestionStrList.IndexOf("0")] = "?";
+
+
+
+        QestionStr = String.Join(znak, QestionStrList.ToArray(), 0, QestionStrList.Count - 1) + "=" + QestionStrList[QestionStrList.Count - 1]; //готовая строка примера
+        return QestionStr;
+    }
+
+    public void Done() // функция запускаемая когда на пример дан верный ответ, запускает дальнейшие елементы сценария
+    {
+        LevelJsonController.next();
     }
 }

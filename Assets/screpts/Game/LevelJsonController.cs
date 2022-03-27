@@ -7,9 +7,9 @@ using System;
 public class LevelJsonController : MonoBehaviour
 {
     public int LevelNumb;
-    public LevelScenario LevelScenarioCl;
-    public int iter = 0;
-    public string[] Instuction;
+    public static LevelScenario LevelScenarioCl;
+    public static int iter = 0;
+    public static string[] Instuction;
     public delegate void Insr(string Argument);
     public static event Insr Qestion;
     public static event Insr Image;
@@ -30,7 +30,7 @@ public class LevelJsonController : MonoBehaviour
 
 
     }
-    public void next()
+    public static void next()
     {
         
         Instuction = LevelScenarioCl.Scenario[iter].Split('/');

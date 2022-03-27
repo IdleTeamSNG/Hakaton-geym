@@ -170,13 +170,8 @@ public class CoreN : MonoBehaviour
         qestion[size] = answer;
         answer = answerprom;
         return qestion;
-
-
-
-
-
-
     }
+
 
 
 
