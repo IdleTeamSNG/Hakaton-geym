@@ -5,6 +5,7 @@ using System;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 
 public class QestionController : MonoBehaviour
 {
@@ -74,7 +75,7 @@ public class QestionController : MonoBehaviour
 
         }
         QestionStr = Prepare(qestion, instruction[0]);
-        txt.GetComponent<Text>().text = QestionStr;// тестовый вывод
+        txt.GetComponent<TextMeshProUGUI>().text = QestionStr;// тестовый вывод
     }
     public void OnDisable()
     {
