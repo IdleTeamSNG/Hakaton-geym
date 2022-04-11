@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.UI;
-using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 
@@ -77,10 +74,12 @@ public class QestionController : MonoBehaviour
         QestionStr = Prepare(qestion, instruction[0]);
         txt.GetComponent<TextMeshProUGUI>().text = QestionStr;// тестовый вывод
     }
+
     public void OnDisable()
     {
         LevelJsonController.Qestion -= NewQestion;
     }
+
     public string Prepare(List<int> qestion, string znak) // форматирование строки до нормального сотояния для вывода
     {
         List<string> QestionStrList;

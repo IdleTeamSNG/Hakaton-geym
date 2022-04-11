@@ -7,6 +7,7 @@ public class CoreN : MonoBehaviour
     private int value;
     List<int> v = new List<int>();
     protected static int answer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
