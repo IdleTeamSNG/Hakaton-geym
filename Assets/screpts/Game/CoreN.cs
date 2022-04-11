@@ -8,17 +8,18 @@ public class CoreN : MonoBehaviour
     List<int> v = new List<int>();
     protected static int answer = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    private string _questionMark;
+
+    [SerializeField] private ButtonContainer _container;
+
+    private void OnEnable()
     {
-        //v = GetNewQuestionljgic2Delenie(1, 10, 5);
-        //foreach (int elem in v)
-        //{
-        //    print(elem);
-        //}
-        //print(answer);
+        _container.onValueRecieved += ApplyValueFromClick;
+    }
 
-
+    private void OnDisable()
+    {
+        _container.onValueRecieved -= ApplyValueFromClick;
     }
 
     public static List<int> GetNewQuestionljgic1Clojenie(int dif1, int dif2, int size)
@@ -173,7 +174,10 @@ public class CoreN : MonoBehaviour
         return qestion;
     }
 
+    private void ApplyValueFromClick(string value)
+    {
 
+    }
 
 
 }
