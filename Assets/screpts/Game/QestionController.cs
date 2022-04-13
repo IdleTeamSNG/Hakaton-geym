@@ -10,11 +10,22 @@ public class QestionController : MonoBehaviour
     
     public string QestionStr;
     public GameObject txt;
+    public string JsonComand;
 
 
     public void Awake()
     {
-        LevelJsonController.Qestion += NewQestion;
+        LevelJsonController.Qestion += JsonIn;
+    }
+    public void OnDisable()
+    {
+        LevelJsonController.Qestion -= JsonIn;
+    }
+
+    public void JsonIn(string Argument)
+    {
+        JsonComand = Argument;
+        NewQestion(JsonComand);
     }
     public void NewQestion(string Argument) // метод активируется когда сценарий доходит до подачи пользователю задачи. На вход идёт строка параметрв разделены точкой:
                                          // знак(+,-,*,\).тип логики(1,2,3,4).аргумент1.аргумент2.аргумент3.аргумент4(только в -).аргумент5(только в -)
@@ -75,10 +86,7 @@ public class QestionController : MonoBehaviour
         txt.GetComponent<TextMeshProUGUI>().text = QestionStr;// тестовый вывод
     }
 
-    public void OnDisable()
-    {
-        LevelJsonController.Qestion -= NewQestion;
-    }
+    
 
     public string Prepare(List<int> qestion, string znak) // форматирование строки до нормального сотояния для вывода
     {
