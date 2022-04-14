@@ -89,6 +89,7 @@ public class QestionController : MonoBehaviour
         SpawnObj = Instantiate(QestionObj);
         SpawnObj.GetComponent<QestionScr>().Qestion = QestionStr;
         SpawnObj.GetComponent<QestionScr>().Answer = CoreN.answer;
+        
 
 
     }
@@ -111,6 +112,6 @@ public class QestionController : MonoBehaviour
 
     public void Done() // функция запускаемая когда на пример дан верный ответ, запускает дальнейшие елементы сценария
     {
-        LevelJsonController.next();
+        LevelJsonController.NextQest();
     }
 }

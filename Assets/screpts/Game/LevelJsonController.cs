@@ -9,7 +9,7 @@ public class LevelJsonController : MonoBehaviour
     public int LevelNumb;
     public static LevelScenario LevelScenarioCl;
     public static int iter = 0;
-    public static string[] Instuction;
+    
     public delegate void Insr(string Argument);
     public static event Insr Qestion;
     public static event Insr Image;
@@ -18,7 +18,7 @@ public class LevelJsonController : MonoBehaviour
     void Start()
     {
         LevelScenarioCl = JsonUtility.FromJson<LevelScenario>(File.ReadAllText(Application.streamingAssetsPath+"/Level"+System.Convert.ToString(LevelNumb)+".json"));
-        next();
+        NextQest();
     }
 
     [System.Serializable]
@@ -30,29 +30,34 @@ public class LevelJsonController : MonoBehaviour
 
 
     }
-    public static void next()
+    public class ImageScenario
     {
-        
-        Instuction = LevelScenarioCl.Scenario[iter].Split('/');
-       switch(Instuction[0] )
-        {
-            case "1":
-                
-                Qestion?.Invoke(Argument: Instuction[1]);
-                break;
+        public List<string> Scenario;
 
-            case "2":
-                Messege?.Invoke(Instuction[1]);
-                break;
-
-            case "3":
-                Image?.Invoke(Instuction[1]);
-                break;
-
-        }
-        iter++;
 
 
 
     }
-}
+    public class StrScenario
+    {
+        public List<string> Scenario;
+
+
+
+
+    }
+
+
+    public static void NextQest()
+    {
+                
+        Qestion?.Invoke(Argument: LevelScenarioCl.Scenario[iter]);
+        iter++;
+
+    }
+        
+
+
+
+    }
+
