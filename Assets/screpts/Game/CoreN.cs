@@ -6,7 +6,7 @@ public class CoreN : MonoBehaviour
 {
     private int value;
     List<int> v = new List<int>();
-    protected static int answer = 0;
+    public static int answer = 0;
 
     private string _questionMark;
 

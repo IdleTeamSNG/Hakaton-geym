@@ -6,6 +6,8 @@ using TMPro;
 
 public class QestionController : MonoBehaviour
 {
+    public GameObject QestionObj;
+    public GameObject SpawnObj;
     public List<int> qestion;
     
     public string QestionStr;
@@ -83,7 +85,12 @@ public class QestionController : MonoBehaviour
 
         }
         QestionStr = Prepare(qestion, instruction[0]);
-        txt.GetComponent<TextMeshProUGUI>().text = QestionStr;// тестовый вывод
+        
+        SpawnObj = Instantiate(QestionObj);
+        SpawnObj.GetComponent<QestionScr>().Qestion = QestionStr;
+        SpawnObj.GetComponent<QestionScr>().Answer = CoreN.answer;
+
+
     }
 
     
