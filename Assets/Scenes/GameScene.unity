@@ -2864,7 +2864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d5cabc4bcc10f4c9ab8299d93450ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: '%'
+  _value: /
 --- !u!114 &1539090123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4270,7 +4270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64100874e06783349a61fedfb32f4309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _container: {fileID: 919670667}
 --- !u!114 &1866851858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4289,6 +4288,7 @@ MonoBehaviour:
   QestionStr: 
   txt: {fileID: 1199131835}
   JsonComand: 
+  _container: {fileID: 919670667}
 --- !u!1 &1880300335
 GameObject:
   m_ObjectHideFlags: 0
