@@ -8,6 +8,8 @@ public class ButtonContainer : MonoBehaviour
 
     public event Action<string> onValueRecieved;
 
+    public event Action onEnterClicked;
+
     private void OnDestroy()
     {
         foreach(var button in _buttons)
@@ -26,6 +28,11 @@ public class ButtonContainer : MonoBehaviour
 
     private void RecieveClickedValue(string value)
     {
+        if(value == "answer")
+        {
+            onEnterClicked?.Invoke();
+            return;
+        }
         onValueRecieved?.Invoke(value);
     }
 }
