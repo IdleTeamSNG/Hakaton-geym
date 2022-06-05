@@ -14,14 +14,29 @@ public class QestionController : MonoBehaviour
     public GameObject txt;
     public string JsonComand;
 
+    private string _questionMark = "?";
+    private string _answer = "";
+
+    [SerializeField] private ButtonContainer _container;
+
+
 
     public void Awake()
     {
         LevelJsonController.Qestion += JsonIn;
     }
+
+    private void OnEnable()
+    {
+        _container.onValueRecieved += ApplyValueFromClick;
+        _container.onEnterClicked += UserDone;
+    }
+
     public void OnDisable()
     {
         LevelJsonController.Qestion -= JsonIn;
+        _container.onValueRecieved -= ApplyValueFromClick;
+        _container.onEnterClicked -= UserDone;
     }
 
     public void JsonIn(string Argument)
@@ -115,5 +130,26 @@ public class QestionController : MonoBehaviour
     public void Done() // функция запускаемая когда на пример дан верный ответ, запускает дальнейшие елементы сценария
     {
         LevelJsonController.NextQest();
+    }
+
+    private void ApplyValueFromClick(string value)
+    {
+        if (_answer == "")
+        {
+            _answer += value;
+            QestionObj.OnAnswerRecieved(_answer, _questionMark);
+        }
+        else
+        {
+            var temp = _answer;
+            _answer += value;
+            QestionObj.OnAnswerRecieved(_answer, temp);
+        }
+
+    }
+
+    private void UserDone()
+    {
+
     }
 }

@@ -10,18 +10,6 @@ public class CoreN : MonoBehaviour
 
     private string _questionMark;
 
-    [SerializeField] private ButtonContainer _container;
-
-    private void OnEnable()
-    {
-        _container.onValueRecieved += ApplyValueFromClick;
-    }
-
-    private void OnDisable()
-    {
-        _container.onValueRecieved -= ApplyValueFromClick;
-    }
-
     public static List<int> GetNewQuestionljgic1Clojenie(int dif1, int dif2, int size)
     {
         answer = 0;
@@ -172,11 +160,6 @@ public class CoreN : MonoBehaviour
         qestion[size] = answer;
         answer = answerprom;
         return qestion;
-    }
-
-    private void ApplyValueFromClick(string value)
-    {
-
     }
 
 
