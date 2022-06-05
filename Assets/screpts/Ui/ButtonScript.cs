@@ -8,7 +8,7 @@ public class ButtonScript : MonoBehaviour
     private Text _text;
     private Button _button;
 
-    private string _value;
+    [SerializeField] private string _value;
 
     public event Action<string> onClick;
 
@@ -26,12 +26,6 @@ public class ButtonScript : MonoBehaviour
     private void OnDisable()
     {
         _button.onClick.RemoveListener(ClickHandle);
-    }
-
-    public void Init(string value)
-    {
-        _value = value;
-        _text.text = value;
     }
 
     private void ClickHandle()

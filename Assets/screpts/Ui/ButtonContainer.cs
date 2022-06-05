@@ -16,11 +16,10 @@ public class ButtonContainer : MonoBehaviour
         }
     }
 
-    public void Init(string[] layout)
+    public void Start()
     {
         for (int i = 0; i < _buttons.Count; i++)
         {
-            _buttons[i].Init(layout[i]);
             _buttons[i].onClick += RecieveClickedValue;
         }
     }
