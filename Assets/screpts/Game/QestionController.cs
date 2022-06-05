@@ -14,7 +14,6 @@ public class QestionController : MonoBehaviour
     public GameObject txt;
     public string JsonComand;
 
-    private string _questionMark = "?";
     private string _answer = "";
 
     [SerializeField] private ButtonContainer _container;
@@ -134,22 +133,13 @@ public class QestionController : MonoBehaviour
 
     private void ApplyValueFromClick(string value)
     {
-        if (_answer == "")
-        {
-            _answer += value;
-            QestionObj.OnAnswerRecieved(_answer, _questionMark);
-        }
-        else
-        {
-            var temp = _answer;
-            _answer += value;
-            QestionObj.OnAnswerRecieved(_answer, temp);
-        }
+        _answer += value;
+        QestionObj.OnAnswerRecieved(_answer);
 
     }
 
     private void UserDone()
     {
-
+        // TODO CheckAnswerMethod
     }
 }
