@@ -100,6 +100,83 @@ public class CoreN : MonoBehaviour
 
         return qestion;
     }
+    public static List<string> crash(List<string> qestion, int type, int colvo)
 
+    {
+        int value = 0;
+
+
+        int size = qestion.Count;
+        int SizeZnak = ((size - 1) / 2) - 1;
+        int SizeChisl = ((size + 1) / 2) -1 ;
+        int AnswInd = size - 1;
+        for (int i = 0; i < colvo; i++)
+        {
+            switch (type)
+            {
+            
+                case (1):
+                    if (qestion[AnswInd] == "?")
+                    {
+                        type = Random.Range(1, 3);
+                        colvo += 1;
+                        break;
+                    }
+                     qestion[AnswInd] = "?";
+                break;
+                case (2):
+                    
+                    value = Random.Range(0, SizeChisl);
+                value += 1;
+                value = (value * 2) - 1;
+                value -= 1;
+                if (qestion[value] == "?")
+                {
+
+                    colvo += 1;
+                    break;
+                }
+                    qestion[value] = "?";
+                break;
+                case (3):
+                    value = Random.Range(0, SizeZnak);
+                value = value * 2 + 1;
+                if (qestion[value] == "!")
+                {
+
+                    colvo += 1;
+                    break;
+                }
+                    qestion[value] = "!";
+                break;
+                case (4):
+                    for (int j = 0;j< colvo; j++)
+                { 
+                    value = Random.Range(0, 4);
+                    qestion = crash(qestion, value, 1);
+                }
+                break;
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+        return qestion;
+
+        
+    }
 
 }

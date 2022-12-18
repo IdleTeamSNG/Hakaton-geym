@@ -9,8 +9,8 @@ public class Test : MonoBehaviour
     void Start()
     {
 
-        qe = CoreN.GetQestion(1, 20, 6, ":");
-        for( int i = 0; i<13; i++)
+        qe = CoreN.crash(CoreN.GetQestion(1, 20, 10, "+"),4,4);
+        for( int i = 0; i<21; i++)
         {
             print(qe[i]);
         }
