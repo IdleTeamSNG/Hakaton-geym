@@ -21,81 +21,10 @@ public class CoreN : MonoBehaviour
             qestion.Add(value);
             answer += value;
         }
-        qestion.Add(0);
+        qestion.Add(answer);
         return qestion;
     }
-    public static List<int> GetNewQuestionljgic1Vichitanie(int dif1, int dif2, int ostatoc1, int ostatoc2, int size)
-    {
-        answer = 0;
-        List<int> qestion = new List<int>();
-
-        int value;
-        int vichit;
-
-        int ost;
-        int difeerence;
-        value = Random.Range(dif1, dif2);
-        qestion.Add(value);
-        answer += value;
-        difeerence = Random.Range(ostatoc1, ostatoc2);
-        ost = value - difeerence;
-        for (int i = 0; i < size; i++)
-        {
-            vichit = Random.Range(0, ost - 1);
-            ost = ost - vichit;
-
-            qestion.Add(vichit);
-
-            answer -= vichit;
-        }
-
-        vichit = ost;
-        ost = ost - vichit;
-
-        qestion.Add(vichit);
-
-        answer -= vichit;
-
-        qestion.Add(0);
-        return qestion;
-
-
-    }
-    public static List<int> GetNewQuestionljgic2Clojenie(int dif1, int dif2, int size)
-    {
-        int answerprom = 0;
-        int x = 0;
-
-        List<int> qestion = GetNewQuestionljgic1Clojenie(dif1, dif2, size);
-
-        x = Random.Range(0, size);
-        answerprom = qestion[x];
-        qestion[x] = 0;
-        qestion[size] = answer;
-        answer = answerprom;
-        return qestion;
-
-
-
-
-
-
-    }
-
-
-    public static List<int> GetNewQuestionljgic2Vichitanie(int dif1, int dif2, int ostatoc1, int ostatoc2, int size)
-    {
-        int answerprom = 0;
-        int x = 0;
-
-        List<int> qestion = GetNewQuestionljgic1Vichitanie(dif1, dif2, ostatoc1, ostatoc2, size);
-        x = Random.Range(0, size);
-        answerprom = qestion[x];
-        qestion[x] = 0;
-        qestion[size + 2] = answer;
-        answer = answerprom;
-        return qestion;
-    }
+   
     public static List<int> GetNewQuestionljgic1Umnojenie(int dif1, int dif2, int size)
     {
 
@@ -109,56 +38,66 @@ public class CoreN : MonoBehaviour
             answer *= value;
 
         }
-        qestion.Add(0);
+        qestion.Add(answer);
         return qestion;
 
     }
-    public static List<int> GetNewQuestionljgic2Umnojenie(int dif1, int dif2, int size)
+    
+    public static List<string> ZnakContain(List<int> preqestion, int size, string znak)
     {
-        int answerprom = 0;
-        int x = 0;
+        List<string> qestion = new List<string>();
+        for (int i = 0; i < size + 1; i++)
+        {
+            qestion.Add(System.Convert.ToString(preqestion[i]));
+            if (i == size - 1)
+            {
+                qestion.Add("=");
+            }
+            else if (i != size)
+            {
+                qestion.Add(znak);
+            }
+            
 
-        List<int> qestion = GetNewQuestionljgic1Umnojenie(dif1, dif2, size);
-
-        x = Random.Range(0, size);
-        answerprom = qestion[x];
-        qestion[x] = 0;
-        qestion[size] = answer;
-        answer = answerprom;
+        }
         return qestion;
-
-
-
-
-
-
     }
-    public static List<int> GetNewQuestionljgic1Delenie(int dif1, int dif2, int size)
+    public static List<string> GetQestion(int dif1, int dif2, int size, string znak)
     {
-        List<int> qestion = new List<int>();
-       
+        List<string> qestion = new List<string>();
+        List<int> preqestion = new List<int>();
 
-        qestion = GetNewQuestionljgic1Umnojenie( dif1,  dif2,  size);
-        qestion[size] = answer;
-        answer = qestion[0];
-        qestion[0] = 0;
-        qestion.Reverse();
-        return qestion;
+        switch (znak)
+        {
+            case ("+"):
+                preqestion = GetNewQuestionljgic1Clojenie(dif1, dif2, size);
+                qestion = ZnakContain(preqestion, size, znak);
+                
+                
+                break;
+            case ("-"):
+                preqestion = GetNewQuestionljgic1Clojenie(dif1, dif2, size);
+                preqestion.Reverse();
+                qestion = ZnakContain(preqestion, size, znak);
 
 
-    }
-    public static List<int> GetNewQuestionljgic2Delenie(int dif1, int dif2, int size)
-    {
-        int answerprom = 0;
-        int x = 0;
+                break;
+            case ("*"):
+                preqestion = GetNewQuestionljgic1Umnojenie(dif1, dif2, size);
+                qestion = ZnakContain(preqestion, size, znak);
 
-        List<int> qestion = GetNewQuestionljgic1Delenie(dif1, dif2, size);
+                break;
+            case (":"):
+                preqestion = GetNewQuestionljgic1Umnojenie(dif1, dif2, size);
+                preqestion.Reverse();
+                qestion = ZnakContain(preqestion, size, znak);
+                break;
 
-        x = Random.Range(0, size);
-        answerprom = qestion[x];
-        qestion[x] = 0;
-        qestion[size] = answer;
-        answer = answerprom;
+
+
+        }
+
+
         return qestion;
     }
 
